@@ -1,0 +1,2940 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#16181c">
+<title>Webject</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234a86ff'/%3E%3Ctext x='16' y='22' font-size='18' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'%3EW%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/darcula.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/dialog/dialog.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/fold/foldgutter.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/show-hint.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/jsx/jsx.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/clike/clike.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/markdown/markdown.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/yaml/yaml.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/shell/shell.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/sql/sql.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/rust/rust.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/go/go.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/toml/toml.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closebrackets.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/matchbrackets.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closetag.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/selection/active-line.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/selection/mark-selection.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/lint/lint.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/search/search.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/search/searchcursor.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/search/match-highlighter.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/dialog/dialog.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/comment/comment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/fold/foldcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/fold/foldgutter.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/fold/brace-fold.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/fold/xml-fold.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/fold/comment-fold.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/fold/indent-fold.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/show-hint.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/xml-hint.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/html-hint.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/css-hint.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/javascript-hint.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/anyword-hint.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/acorn/8.11.3/acorn.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/acorn-loose/8.4.0/acorn-loose.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify-css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify-html.min.js"></script>
+<script src="https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.js"></script>
+<style>
+  :root {
+    --bg: #16181c;
+    --panel: #1d2026;
+    --panel-2: #23272f;
+    --border: #2c313a;
+    --hover: #2a2f38;
+    --active: #2c3f63;
+    --accent: #4a86ff;
+    --accent-ring: rgba(74,134,255,0.2);
+    --text: #d7dae0;
+    --muted: #7d8593;
+    --error: #ff5566;
+    --error-bg: rgba(255,85,102,0.08);
+    --ok: #5fbf6b;
+    --warn: #e6b450;
+    --radius: 10px;
+    --radius-sm: 6px;
+    --menu-bg: #23272f;
+    --menu-border: #2c313a;
+    --menu-hover: #2c3f63;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
+  html, body { height: 100%; width: 100%; }
+  body {
+    font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg);
+    color: var(--text);
+    overflow: hidden;
+    height: 100vh;
+  }
+  header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .logo { font-size: 22px; font-weight: 800; color: var(--accent); letter-spacing: 0.3px; user-select: none; cursor: pointer; transition: opacity .15s; }
+  .logo:hover { opacity: 0.8; }
+  .logo span { color: var(--text); }
+  .control {
+    font: inherit; font-size: 13px; padding: 7px 12px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--panel-2);
+    color: var(--text);
+    cursor: pointer;
+    outline: none;
+    transition: border-color .15s, background .15s, transform .1s;
+  }
+  .control:hover { border-color: var(--accent); }
+  .control:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  select.control {
+    appearance: none;
+    padding-right: 30px;
+    background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+    background-position: calc(100% - 16px) 50%, calc(100% - 11px) 50%;
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+  }
+  .spacer { flex: 1; }
+  button.control { border: none; }
+  button.primary { background: var(--accent); color: #fff; border: 1px solid var(--accent); }
+  button.primary:hover { filter: brightness(1.1); }
+  button.primary:active { transform: scale(0.97); }
+  button.ghost { background: var(--panel-2); color: var(--text); border: 1px solid var(--border); }
+  button.ghost:hover { background: var(--hover); }
+  .lang-switch { display: flex; gap: 2px; background: var(--panel-2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 2px; }
+  .lang-switch button { font: inherit; font-size: 11px; padding: 4px 8px; border-radius: 4px; border: none; background: transparent; color: var(--muted); cursor: pointer; font-weight: 600; }
+  .lang-switch button.active { background: var(--accent); color: #fff; }
+  .offline-badge { font-size: 11px; color: var(--warn); padding: 4px 8px; border-radius: 6px; background: var(--panel-2); display: none; }
+  .offline-badge.show { display: inline-block; }
+  main { flex: 1 1 auto; display: flex; min-height: 0; min-width: 0; padding: 10px; gap: 10px; overflow: hidden; }
+  aside {
+    width: 290px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-height: 0;
+    transition: width .2s, opacity .2s, margin .2s;
+  }
+  aside.hidden { width: 0; border: 0; margin-right: -10px; opacity: 0; pointer-events: none; }
+  .tree-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--muted);
+    padding: 12px 14px 8px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  .tree-title .badge { font-size: 10px; background: var(--panel-2); color: var(--text); padding: 2px 8px; border-radius: 20px; text-transform: none; letter-spacing: 0; }
+  .search {
+    margin: 0 12px 8px;
+    padding: 7px 10px;
+    font: inherit; font-size: 12px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--panel-2);
+    color: var(--text);
+    outline: none;
+    transition: border-color .15s, box-shadow .15s;
+    flex-shrink: 0;
+  }
+  .search:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-ring); }
+  .tree-body { flex: 1 1 auto; overflow-y: auto; padding-bottom: 8px; min-height: 0; }
+  .node {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 10px;
+    font-size: 13px;
+    cursor: pointer;
+    user-select: none;
+    color: var(--muted);
+    border-radius: var(--radius-sm);
+    margin: 1px 6px;
+    position: relative;
+    transition: background .12s, color .12s;
+  }
+  .node:hover { background: var(--hover); color: var(--text); }
+  .node.active { background: var(--active); color: var(--text); }
+  .node.selected:not(.active) { background: var(--panel-2); }
+  .node.drop-target { background: var(--accent-ring); }
+  .node .arrow { width: 12px; text-align: center; font-size: 9px; color: var(--muted); flex-shrink: 0; transition: transform .15s; }
+  .node .icon { width: 16px; text-align: center; flex-shrink: 0; font-size: 13px; }
+  .node .name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; user-select: text; }
+  .node .ext { font-size: 9px; padding: 1px 5px; border-radius: 4px; background: var(--panel-2); color: var(--muted); text-transform: uppercase; letter-spacing: 0.3px; }
+  .node.active .ext { background: rgba(255,255,255,0.15); color: var(--text); }
+  .node .err-mark { color: var(--error); font-size: 11px; font-weight: 600; flex-shrink: 0; }
+  .rename-input {
+    flex: 1;
+    font: inherit; font-size: 13px;
+    padding: 1px 4px;
+    border-radius: 4px;
+    border: 1px solid var(--accent);
+    background: var(--panel);
+    color: var(--text);
+    outline: none;
+    min-width: 0;
+  }
+  .children { display: block; animation: slideIn .15s ease; }
+  @keyframes slideIn { from { opacity: 0; transform: translateY(-3px); } to { opacity: 1; transform: translateY(0); } }
+  .editor-wrap {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 0;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .tab-bar {
+    display: flex;
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+    flex-shrink: 0;
+    min-height: 40px;
+    padding: 5px 5px 0;
+    gap: 2px;
+  }
+  .tab {
+    padding: 7px 12px;
+    font-size: 12.5px;
+    cursor: pointer;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    white-space: nowrap;
+    user-select: none;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    transition: background .12s, color .12s;
+    position: relative;
+    border: none;
+    background: transparent;
+    font-family: inherit;
+  }
+  .tab:hover { background: var(--hover); color: var(--text); }
+  .tab.active { background: var(--panel-2); color: var(--text); }
+  .tab.active::after { content: ""; position: absolute; left: 10px; right: 10px; bottom: 0; height: 2px; background: var(--accent); border-radius: 2px; }
+  .tab:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  .tab .close { font-size: 14px; line-height: 1; color: var(--muted); padding: 0 3px; border-radius: 3px; transition: background .12s, color .12s; border: none; background: transparent; cursor: pointer; }
+  .tab .close:hover { background: var(--border); color: var(--text); }
+  .tab .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--warn); }
+  .tab .dot.err { background: var(--error); }
+  .editor-area {
+    flex: 1 1 auto;
+    min-height: 0;
+    min-width: 0;
+    position: relative;
+    background: var(--bg);
+    overflow: hidden;
+    height: 100%;
+  }
+  .editor-area .CodeMirror {
+    height: 100%;
+    font-family: "JetBrains Mono", "Consolas", "Courier New", monospace;
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+  .CodeMirror-gutters { background: var(--bg); border-right: 1px solid var(--border); }
+  .CodeMirror-linenumber { color: var(--muted); }
+  .CodeMirror-foldmarker { color: var(--accent); background: var(--panel-2); border-radius: 4px; padding: 0 4px; }
+  .CodeMirror-lint-mark-error {
+    background-image: none;
+    background-color: transparent;
+    border-bottom: 2px solid var(--error);
+    box-shadow: 0 2px 0 -1px rgba(255,85,102,0.35);
+  }
+  .CodeMirror-lint-line-error { background: var(--error-bg); }
+  .CodeMirror-lint-marker-error { background: var(--error) !important; border-radius: 50%; width: 8px; height: 8px; margin: 5px; }
+  .CodeMirror-lint-message-error {
+    background: var(--panel);
+    color: var(--error);
+    border: 1px solid var(--error);
+    border-radius: var(--radius-sm);
+    padding: 5px 9px;
+    font-size: 12px;
+    font-family: system-ui, sans-serif;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  }
+  .CodeMirror-lint-tooltip { background: transparent; border: none; box-shadow: none; }
+  .CodeMirror-dialog { background: var(--panel); color: var(--text); border-bottom: 1px solid var(--border); padding: 6px 12px; font-family: inherit; font-size: 13px; }
+  .CodeMirror-dialog input { background: var(--panel-2); border: 1px solid var(--border); color: var(--text); padding: 4px 8px; border-radius: 4px; font-family: inherit; font-size: 13px; outline: none; }
+  .CodeMirror-dialog input:focus { border-color: var(--accent); }
+  .CodeMirror-dialog button { background: var(--panel-2); border: 1px solid var(--border); color: var(--text); border-radius: 4px; padding: 3px 10px; font-family: inherit; cursor: pointer; }
+  .CodeMirror-dialog button:hover { background: var(--hover); }
+  .CodeMirror-hints { background: var(--menu-bg); border: 1px solid var(--menu-border); border-radius: 6px; font-family: "JetBrains Mono", monospace; font-size: 12.5px; box-shadow: 0 8px 24px rgba(0,0,0,0.5); }
+  .CodeMirror-hint { color: var(--text); padding: 3px 8px; }
+  li.CodeMirror-hint-active { background: var(--accent); color: #fff; }
+  .py-output {
+    flex-shrink: 0;
+    height: 0;
+    overflow: hidden;
+    background: #0f1115;
+    border-top: 1px solid var(--border);
+    transition: height .2s;
+    display: flex;
+    flex-direction: column;
+  }
+  .py-output.open { height: 180px; }
+  .py-output-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 12px;
+    font-size: 11px;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+    gap: 8px;
+  }
+  .py-output-header .title { font-weight: 600; }
+  .py-output-header .actions { display: flex; gap: 6px; }
+  .py-output-header button { font: inherit; font-size: 11px; padding: 2px 8px; border-radius: 4px; border: 1px solid var(--border); background: var(--panel-2); color: var(--text); cursor: pointer; }
+  .py-output-header button:hover { background: var(--hover); border-color: var(--accent); }
+  .py-output-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px 12px;
+    font-family: "JetBrains Mono", "Consolas", monospace;
+    font-size: 12px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    color: #c8d0dc;
+  }
+  .py-output-body .err { color: var(--error); }
+  .empty {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-size: 14px;
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+    padding: 20px;
+  }
+  .empty .big { font-size: 26px; opacity: 0.4; }
+  .empty span { font-size: 12px; color: var(--muted); opacity: 0.7; }
+  .empty .hint { font-size: 12px; color: var(--muted); opacity: 0.6; max-width: 320px; }
+  .status {
+    padding: 6px 16px;
+    font-size: 12px;
+    background: var(--panel);
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+  .status .ok { color: var(--ok); }
+  .status .warn { color: var(--warn); }
+  .status .err { color: var(--error); font-weight: 600; }
+  .status .right { display: flex; gap: 16px; align-items: center; }
+  .err-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--error); margin-right: 5px; animation: pulse 1.6s infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+  .modal-bg {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(3px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+  }
+  .modal-bg.show { display: flex; animation: fadeIn .15s ease; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .modal {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    width: 560px;
+    max-width: calc(100% - 32px);
+    max-height: calc(100% - 32px);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    animation: popIn .2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    overflow: hidden;
+  }
+  @keyframes popIn { from { opacity: 0; transform: scale(0.94) translateY(8px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+  .modal h3 { font-size: 16px; color: var(--text); font-weight: 600; }
+  .modal .hint { font-size: 12px; color: var(--muted); }
+  .modal .body { flex: 1; overflow-y: auto; min-height: 0; display: flex; flex-direction: column; gap: 12px; }
+  .modal input, .modal select {
+    font: inherit; font-size: 13px; padding: 10px 12px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--panel-2);
+    color: var(--text);
+    outline: none;
+    transition: border-color .15s, box-shadow .15s;
+    width: 100%;
+  }
+  .modal input:focus, .modal select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-ring); }
+  .modal .row { display: flex; gap: 10px; justify-content: flex-end; margin-top: 4px; }
+  .modal .row button { padding: 8px 18px; border-radius: var(--radius-sm); font-size: 13px; }
+  .guide-section { background: var(--panel-2); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; }
+  .guide-section h4 { font-size: 13px; color: var(--accent); margin-bottom: 6px; font-weight: 600; }
+  .guide-section p, .guide-section li { font-size: 12.5px; color: var(--text); line-height: 1.7; }
+  .guide-section .sub { color: var(--muted); font-size: 12px; }
+  .guide-section ul { padding-left: 18px; margin-top: 4px; }
+  .guide-section kbd { background: var(--border); padding: 1px 5px; border-radius: 3px; font-family: monospace; font-size: 11px; color: var(--text); }
+  .guide-section .step { display: flex; gap: 10px; margin-top: 8px; }
+  .guide-section .step-num { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+  .guide-section .step-body { flex: 1; }
+  .guide-section .step-body strong { color: var(--text); }
+  .ctx-menu {
+    position: fixed;
+    z-index: 200;
+    min-width: 220px;
+    background: var(--menu-bg);
+    border: 1px solid var(--menu-border);
+    border-radius: 10px;
+    padding: 6px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+    display: none;
+    flex-direction: column;
+    gap: 1px;
+    max-height: calc(100vh - 20px);
+    overflow-y: auto;
+  }
+  .ctx-menu.show { display: flex; animation: ctxIn .12s ease; }
+  @keyframes ctxIn { from { opacity: 0; transform: scale(0.97); } to { opacity: 1; transform: scale(1); } }
+  .ctx-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 7px 10px;
+    font-size: 13px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: var(--text);
+    background: transparent;
+    border: none;
+    font-family: inherit;
+    text-align: left;
+    width: 100%;
+    transition: background .1s, color .1s;
+  }
+  .ctx-item:hover { background: var(--menu-hover); }
+  .ctx-item.danger { color: var(--error); }
+  .ctx-item.danger:hover { background: var(--error-bg); }
+  .ctx-item .kbd { margin-left: auto; font-size: 10px; color: var(--muted); padding: 1px 5px; border-radius: 4px; border: 1px solid var(--border); }
+  .ctx-sep { height: 1px; background: var(--border); margin: 4px 2px; }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 6px; border: 2px solid var(--panel); }
+  ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+  @media (prefers-reduced-motion: reduce) {
+    .modal, .ctx-menu, .children, .err-dot, .tab, .node, .py-output { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <button class="control ghost" id="toggleSidebar" data-i18n-title="sidebar" aria-label="Sidebar">☰</button>
+  <div class="logo" id="logoBtn">Web<span>ject</span></div>
+  <select id="langSelect" class="control" data-i18n-title="projectLang" aria-label="Project language">
+    <option value="html">HTML / CSS / JS</option>
+    <option value="csharp">C#</option>
+    <option value="python">Python</option>
+    <option value="cpp">C++</option>
+    <option value="empty" data-i18n="emptyProject">Пустой проект</option>
+  </select>
+  <button class="control ghost" id="regenBtn" data-i18n="regen" data-i18n-title="regenTitle">Пересоздать</button>
+  <button class="control ghost" id="runPyBtn" style="display:none" data-i18n="run" data-i18n-title="runTitle">▶ Запустить</button>
+  <button class="control ghost" id="previewBtn" data-i18n-title="preview" aria-label="Preview">▶</button>
+  <span class="offline-badge" id="offlineBadge" role="status" data-i18n="offline">офлайн — часть функций недоступна</span>
+  <div class="spacer"></div>
+  <div class="lang-switch">
+    <button id="langRu" class="active">RU</button>
+    <button id="langEn">EN</button>
+  </div>
+  <button class="control ghost" id="importJsonBtn" data-i18n="import" data-i18n-title="importTitle">Импорт</button>
+  <button class="control primary" id="saveZip" data-i18n="saveZip" data-i18n-title="saveZipTitle">Сохранить ZIP</button>
+</header>
+<main id="mainMain">
+  <aside id="sidebar">
+    <div class="tree-title"><span data-i18n="project">Проект</span> <span class="badge" id="fileCount">0</span></div>
+    <input class="search" id="searchInput" data-i18n-placeholder="searchPlaceholder" data-i18n-title="searchTitle" aria-label="Search file">
+    <div class="tree-body" id="tree" role="tree" tabindex="0"></div>
+  </aside>
+  <div class="editor-wrap">
+    <div class="tab-bar" id="tabBar" role="tablist"></div>
+    <div class="editor-area" id="editorArea"></div>
+    <div class="py-output" id="pyOutput">
+      <div class="py-output-header">
+        <span class="title" data-i18n="output">Вывод Python</span>
+        <div class="actions">
+          <button id="clearOutput" data-i18n="clear">Очистить</button>
+          <button id="hideOutput" data-i18n="hideOutput">Скрыть</button>
+          <button id="closeOutput" aria-label="Close" title="×">×</button>
+        </div>
+      </div>
+      <div class="py-output-body" id="pyOutputBody"></div>
+    </div>
+  </div>
+</main>
+<div class="status">
+  <span id="statusMsg" class="ok" role="status" aria-live="polite">Готово</span>
+  <span class="right">
+    <span id="errorBadge" role="status" aria-live="polite"></span>
+    <span id="statusInfo"></span>
+  </span>
+</div>
+
+<div class="modal-bg" id="modalBg">
+  <div class="modal" role="dialog" aria-modal="true">
+    <h3 id="modalTitle">Новый файл</h3>
+    <div class="hint" id="modalHint"></div>
+    <div class="body" id="modalBody">
+      <input id="modalInput" placeholder="" autocomplete="off">
+    </div>
+    <div class="row">
+      <button class="ghost control" id="modalCancel" data-i18n="cancel">Отмена</button>
+      <button class="primary control" id="modalOk" data-i18n="create">Создать</button>
+    </div>
+  </div>
+</div>
+
+<div class="ctx-menu" id="ctxMenu" role="menu"></div>
+
+<script>
+const I18N = {
+  ru: {
+    sidebar: "Показать/скрыть панель (Ctrl+B)",
+    projectLang: "Язык проекта",
+    emptyProject: "Пустой проект",
+    regen: "Пересоздать",
+    regenTitle: "Сбросить к шаблону",
+    run: "Запустить",
+    runTitle: "Запустить Python (Pyodide)",
+    preview: "Превью HTML (Ctrl+Enter)",
+    offline: "офлайн — часть функций недоступна",
+    import: "Импорт",
+    importTitle: "Импорт проекта из JSON (Ctrl+Alt+I)",
+    saveZip: "Сохранить ZIP",
+    saveZipTitle: "Скачать ZIP (Ctrl+Shift+S)",
+    project: "Проект",
+    searchPlaceholder: "Поиск файла… (Ctrl+Shift+E)",
+    searchTitle: "Поиск файла",
+    output: "Вывод Python",
+    clear: "Очистить",
+    hideOutput: "Скрыть",
+    cancel: "Отмена",
+    create: "Создать",
+    ok: "OK",
+    confirmTitle: "Подтверждение",
+    newFile: "Новый файл",
+    newFolder: "Новая папка",
+    createFile: "+ Создать файл",
+    emptyTitle: "Пустой проект",
+    emptyHint: "Создайте первый файл или папку, чтобы начать",
+    emptyEditorHint: "ПКМ по панели проекта — создать файл или папку",
+    dblClickRename: "двойной клик по узлу — переименовать",
+    hintBar: "Ctrl+Shift+F — поиск по проекту · Ctrl+G — переход к строке · Ctrl+Enter — превью HTML",
+    ready: "Готово",
+    restored: "Восстановлена сессия",
+    templateLoaded: "Загружен шаблон: ",
+    emptyProjectLoaded: "Пустой проект — создайте первый файл (Ctrl+N)",
+    fileCreated: "Создан файл: ",
+    folderCreated: "Создана папка: ",
+    fileDeleted: "Удалён файл: ",
+    folderDeleted: "Удалена папка: ",
+    renamed: "Переименовано: ",
+    opened: "Открыт файл: ",
+    notFound: "Файл не найден: ",
+    invalidName: "Недопустимое имя",
+    nameExists: "Такое имя уже существует",
+    fileExists: "Такой файл уже есть",
+    folderExists: "Такая папка уже есть",
+    pathInvalid: "Недопустимое имя в пути",
+    moved: "Перемещён: ",
+    movedFolder: "Перемещена папка: ",
+    cantMoveIntoSelf: "Нельзя переместить папку внутрь себя",
+    fileExistsInTarget: "Файл уже существует в целевой папке",
+    folderExistsInTarget: "Папка уже существует",
+    copiedPath: "Скопирован путь: ",
+    copyFailed: "Не удалось скопировать",
+    clipboardUnavailable: "Буфер обмена недоступен",
+    formatted: "Отформатировано: ",
+    alreadyFormatted: "Уже отформатировано",
+    formatNotSupported: "Форматирование не поддерживается",
+    formatError: "Ошибка форматирования: ",
+    previewOpened: "Открыт предпросмотр",
+    previewOnlyHtml: "Превью доступно только для HTML",
+    downloadedOne: "Скачан одним файлом",
+    downloaded: "Скачан файл: ",
+    imported: "Импортировано файлов: ",
+    importError: "Ошибка импорта, добавлено: ",
+    importJsonError: "Ошибка импорта: ",
+    readError: "Ошибка чтения файла",
+    importedProject: "Импортирован проект: ",
+    files: "файлов",
+    zipSaved: "ZIP сохранён: Webject.zip",
+    zipError: "Ошибка ZIP: ",
+    noJSZip: "Нет доступа к JSZip. Проверьте интернет.",
+    noCodeMirror: "Редактор не загрузился",
+    checkInternet: "Проверьте интернет и обновите страницу",
+    noOpenFile: "Нет открытого файла",
+    savedStorage: "Сохранено в хранилище",
+    storageFull: "Хранилище переполнено. Скачайте ZIP.",
+    foldersNotSupported: "Папки не поддерживаются — только файлы",
+    searchProject: "Поиск по проекту",
+    searchLine: "Строка поиска",
+    searchPlaceholder2: "искать во всех файлах…",
+    searchBtn: "Искать",
+    nothingFound: "Ничего не найдено",
+    enterQuery: "Введите запрос",
+    found: "Найдено: ",
+    gotoLine: "Переход к строке",
+    lineNumber: "Номер строки",
+    gotoPlaceholder: "например, 42",
+    gotoBtn: "Перейти",
+    ctxNewFile: "Новый файл",
+    ctxNewFolder: "Новая папка",
+    ctxCollapseAll: "Свернуть всё",
+    ctxExpandAll: "Развернуть всё",
+    ctxImportFiles: "Импорт файлов",
+    ctxClearProject: "Очистить проект",
+    ctxRename: "Переименовать",
+    ctxCopyPath: "Копировать путь",
+    ctxDeleteFolder: "Удалить папку",
+    ctxOpen: "Открыть",
+    ctxDownload: "Скачать файл",
+    ctxPreview: "Превью",
+    ctxFormat: "Форматировать",
+    ctxDownloadOne: "Скачать одним HTML",
+    ctxDeleteFile: "Удалить файл",
+    ctxClose: "Закрыть",
+    ctxCloseOthers: "Закрыть остальные",
+    confirmDeleteFile: "Удалить файл ",
+    confirmDeleteFolder: "Удалить папку ",
+    andAllContent: " и всё содержимое (",
+    filesWord: " файлов)?",
+    confirmUnsavedLang: "Сменить язык? Несохранённые изменения будут потеряны.",
+    confirmRegen: "Пересоздать проект ",
+    confirmRegenEnd: "? Текущие изменения будут потеряны.",
+    confirmEmpty: "Создать пустой проект? Текущие изменения будут потеряны.",
+    confirmImport: "Импортировать проект (",
+    confirmImportEnd: " файлов)? Текущий будет заменён.",
+    confirmCloseDirty: "Есть несохранённые изменения в ",
+    confirmCloseDirtyEnd: ". Закрыть?",
+    pyLoading: "Загрузка Pyodide (первый раз ~10 МБ)…",
+    pyReady: "Pyodide готов",
+    pyRunning: "Выполнение…",
+    pyDone: "Готово",
+    pyError: "Ошибка Python",
+    pyNoCode: "Нет кода для запуска",
+    pyNotPython: "Запуск доступен только для .py файлов",
+    guideTitle: "Добро пожаловать в Webject",
+    guideIntro: "Webject — это программа прямо в браузере, в которой можно писать код, создавать файлы и сразу видеть результат. Всё работает без установки, а ваша работа сохраняется автоматически.",
+    g1Title: "1. Что такое проект, файл и папка",
+    g1Text: "Проект — это ваша работа целиком. Внутри проекта лежат файлы (например, main.py) и папки (например, app/). Файл — это один документ с кодом. Папка — это коробка, в которую можно сложить файлы, чтобы не путаться.",
+    g2Title: "2. С чего начать",
+    g2Step1: "В шапке сайта выберите язык проекта. Для новичка лучше всего подойдёт Python — он проще всего читается.",
+    g2Step2: "Если не хотите ничего выбирать — нажмите «Пустой проект» и создайте первый файл сами.",
+    g2Step3: "Слева появится список файлов. Нажмите на файл, чтобы открыть его в редакторе.",
+    g3Title: "3. Как создать файл или папку",
+    g3Text: "Нажмите правой кнопкой мыши по пустому месту в панели слева — появится меню. Выберите «Новый файл» и введите имя (например, main.py). Так же создаётся папка.",
+    g4Title: "4. Как писать код",
+    g4Text: "Просто кликните по файлу и печатайте. Строки нумеруются слева, а цветной текст помогает читать код. Если ошиблись — Ctrl+Z отменит последнее действие.",
+    g5Title: "5. Как запустить Python",
+    g5Text: "Откройте файл с расширением .py. В шапке появится кнопка «Запустить». Нажмите её — код выполнится прямо в браузере, а всё, что он напечатает через print(), появится в панели под редактором. Первый запуск может занять 10–15 секунд, потому что скачивается интерпретатор.",
+    g5Note: "Панель с выводом можно скрыть кнопкой «Скрыть» или крестиком — она больше не будет мешать.",
+    g6Title: "6. Как всё сохраняется",
+    g6Text: "Ваши файлы автоматически сохраняются в браузере (в localStorage). Если закрыть вкладку и открыть снова — всё останется на месте. Чтобы забрать проект с собой, нажмите «Сохранить ZIP» — получится архив с файлами, который можно открыть на любом компьютере.",
+    g7Title: "7. Что такое ZIP",
+    g7Text: "ZIP — это как папка, только в одном файле. Внутри лежат все ваши файлы. Его удобно отправить другу или открыть на другом устройстве.",
+    g8Title: "8. Горячие клавиши (для удобства)",
+    g8Text: "Ctrl+S — сохранить · Ctrl+Shift+S — скачать ZIP · Ctrl+N — новый файл · Ctrl+B — скрыть/показать панель слева · Ctrl+W — закрыть вкладку файла · Ctrl+P — быстрый переход к файлу · Ctrl+G — перейти к строке · Ctrl+Enter — превью HTML.",
+    g9Title: "9. Если что-то сломалось",
+    g9Text: "Кнопка «Пересоздать» в шапке сбрасывает проект к исходному шаблону. Если случайно удалили файл — Ctrl+Z вернёт его. Если редактор не загрузился — проверьте интернет и обновите страницу.",
+    g10Title: "10. Что дальше",
+    g10Text: "Начните с простого: создайте файл main.py, напишите print(\"Привет, мир\") и нажмите «Запустить». Увидите результат — значит всё работает. Дальше пробуйте менять текст, добавлять новые строки, создавать другие файлы.",
+    guideClose: "Понятно, спасибо!"
+  },
+  en: {
+    sidebar: "Show/hide sidebar (Ctrl+B)",
+    projectLang: "Project language",
+    emptyProject: "Empty project",
+    regen: "Regenerate",
+    regenTitle: "Reset to template",
+    run: "Run",
+    runTitle: "Run Python (Pyodide)",
+    preview: "HTML preview (Ctrl+Enter)",
+    offline: "offline — some features unavailable",
+    import: "Import",
+    importTitle: "Import project from JSON (Ctrl+Alt+I)",
+    saveZip: "Save ZIP",
+    saveZipTitle: "Download ZIP (Ctrl+Shift+S)",
+    project: "Project",
+    searchPlaceholder: "Search file… (Ctrl+Shift+E)",
+    searchTitle: "Search file",
+    output: "Python output",
+    clear: "Clear",
+    hideOutput: "Hide",
+    cancel: "Cancel",
+    create: "Create",
+    ok: "OK",
+    confirmTitle: "Confirm",
+    newFile: "New file",
+    newFolder: "New folder",
+    createFile: "+ Create file",
+    emptyTitle: "Empty project",
+    emptyHint: "Create your first file or folder to get started",
+    emptyEditorHint: "Right-click the project panel to create a file or folder",
+    dblClickRename: "double-click a node to rename",
+    hintBar: "Ctrl+Shift+F — search project · Ctrl+G — go to line · Ctrl+Enter — HTML preview",
+    ready: "Ready",
+    restored: "Session restored",
+    templateLoaded: "Template loaded: ",
+    emptyProjectLoaded: "Empty project — create your first file (Ctrl+N)",
+    fileCreated: "File created: ",
+    folderCreated: "Folder created: ",
+    fileDeleted: "File deleted: ",
+    folderDeleted: "Folder deleted: ",
+    renamed: "Renamed: ",
+    opened: "Opened: ",
+    notFound: "File not found: ",
+    invalidName: "Invalid name",
+    nameExists: "This name already exists",
+    fileExists: "This file already exists",
+    folderExists: "This folder already exists",
+    pathInvalid: "Invalid name in path",
+    moved: "Moved: ",
+    movedFolder: "Folder moved: ",
+    cantMoveIntoSelf: "Cannot move a folder into itself",
+    fileExistsInTarget: "File already exists in target folder",
+    folderExistsInTarget: "Folder already exists",
+    copiedPath: "Path copied: ",
+    copyFailed: "Failed to copy",
+    clipboardUnavailable: "Clipboard unavailable",
+    formatted: "Formatted: ",
+    alreadyFormatted: "Already formatted",
+    formatNotSupported: "Formatting not supported",
+    formatError: "Format error: ",
+    previewOpened: "Preview opened",
+    previewOnlyHtml: "Preview is only available for HTML",
+    downloadedOne: "Downloaded as single file",
+    downloaded: "File downloaded: ",
+    imported: "Files imported: ",
+    importError: "Import error, added: ",
+    importJsonError: "Import error: ",
+    readError: "File read error",
+    importedProject: "Project imported: ",
+    files: "files",
+    zipSaved: "ZIP saved: Webject.zip",
+    zipError: "ZIP error: ",
+    noJSZip: "JSZip unavailable. Check internet.",
+    noCodeMirror: "Editor failed to load",
+    checkInternet: "Check internet and reload the page",
+    noOpenFile: "No file open",
+    savedStorage: "Saved to storage",
+    storageFull: "Storage full. Download ZIP.",
+    foldersNotSupported: "Folders not supported — files only",
+    searchProject: "Search project",
+    searchLine: "Search line",
+    searchPlaceholder2: "search in all files…",
+    searchBtn: "Search",
+    nothingFound: "Nothing found",
+    enterQuery: "Enter a query",
+    found: "Found: ",
+    gotoLine: "Go to line",
+    lineNumber: "Line number",
+    gotoPlaceholder: "e.g., 42",
+    gotoBtn: "Go",
+    ctxNewFile: "New file",
+    ctxNewFolder: "New folder",
+    ctxCollapseAll: "Collapse all",
+    ctxExpandAll: "Expand all",
+    ctxImportFiles: "Import files",
+    ctxClearProject: "Clear project",
+    ctxRename: "Rename",
+    ctxCopyPath: "Copy path",
+    ctxDeleteFolder: "Delete folder",
+    ctxOpen: "Open",
+    ctxDownload: "Download file",
+    ctxPreview: "Preview",
+    ctxFormat: "Format",
+    ctxDownloadOne: "Download as single HTML",
+    ctxDeleteFile: "Delete file",
+    ctxClose: "Close",
+    ctxCloseOthers: "Close others",
+    confirmDeleteFile: "Delete file ",
+    confirmDeleteFolder: "Delete folder ",
+    andAllContent: " and all content (",
+    filesWord: " files)?",
+    confirmUnsavedLang: "Change language? Unsaved changes will be lost.",
+    confirmRegen: "Regenerate project ",
+    confirmRegenEnd: "? Current changes will be lost.",
+    confirmEmpty: "Create empty project? Current changes will be lost.",
+    confirmImport: "Import project (",
+    confirmImportEnd: " files)? Current project will be replaced.",
+    confirmCloseDirty: "Unsaved changes in ",
+    confirmCloseDirtyEnd: ". Close?",
+    pyLoading: "Loading Pyodide (first time ~10 MB)…",
+    pyReady: "Pyodide ready",
+    pyRunning: "Running…",
+    pyDone: "Done",
+    pyError: "Python error",
+    pyNoCode: "No code to run",
+    pyNotPython: "Run is only available for .py files",
+    guideTitle: "Welcome to Webject",
+    guideIntro: "Webject is a program right in your browser where you can write code, create files, and see the result immediately. Nothing to install, and your work is saved automatically.",
+    g1Title: "1. What is a project, file, and folder",
+    g1Text: "A project is your whole work. Inside it there are files (e.g., main.py) and folders (e.g., app/). A file is one document with code. A folder is a box where you can put files to stay organized.",
+    g2Title: "2. Where to start",
+    g2Step1: "In the top bar, choose the project language. For beginners, Python is best — it's the easiest to read.",
+    g2Step2: "If you don't want to choose — pick \"Empty project\" and create the first file yourself.",
+    g2Step3: "A list of files appears on the left. Click a file to open it in the editor.",
+    g3Title: "3. How to create a file or folder",
+    g3Text: "Right-click on an empty spot in the left panel — a menu appears. Choose \"New file\" and type a name (e.g., main.py). Folders are created the same way.",
+    g4Title: "4. How to write code",
+    g4Text: "Just click a file and start typing. Lines are numbered on the left, and colored text helps you read the code. If you make a mistake — Ctrl+Z undoes the last action.",
+    g5Title: "5. How to run Python",
+    g5Text: "Open a file with a .py extension. A \"Run\" button appears in the top bar. Click it — the code runs right in your browser, and everything it prints via print() appears in the panel below the editor. The first run may take 10–15 seconds because the interpreter is being downloaded.",
+    g5Note: "You can hide the output panel with the \"Hide\" button or the × — it won't bother you anymore.",
+    g6Title: "6. How everything is saved",
+    g6Text: "Your files are saved automatically in the browser (localStorage). If you close the tab and open it again — everything stays. To take the project with you, click \"Save ZIP\" — you get an archive with the files that can be opened on any computer.",
+    g7Title: "7. What is a ZIP",
+    g7Text: "A ZIP is like a folder, but in a single file. All your files are inside. It's convenient to send to a friend or open on another device.",
+    g8Title: "8. Hotkeys (for convenience)",
+    g8Text: "Ctrl+S — save · Ctrl+Shift+S — download ZIP · Ctrl+N — new file · Ctrl+B — show/hide left panel · Ctrl+W — close file tab · Ctrl+P — quick file switch · Ctrl+G — go to line · Ctrl+Enter — HTML preview.",
+    g9Title: "9. If something broke",
+    g9Text: "The \"Regenerate\" button in the top bar resets the project to the original template. If you accidentally deleted a file — Ctrl+Z brings it back. If the editor didn't load — check internet and reload the page.",
+    g10Title: "10. What's next",
+    g10Text: "Start simple: create a file main.py, write print(\"Hello, world\") and click \"Run\". If you see the result — everything works. Then try changing the text, adding new lines, creating other files.",
+    guideClose: "Got it, thanks!"
+  }
+};
+
+let uiLang = "ru";
+const tr = key => (I18N[uiLang] && I18N[uiLang][key]) || I18N.ru[key] || key;
+
+function applyUiLang(lang) {
+  uiLang = lang;
+  document.documentElement.lang = lang === "ru" ? "ru" : "en";
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    el.textContent = tr(el.getAttribute("data-i18n"));
+  });
+  document.querySelectorAll("[data-i18n-title]").forEach(el => {
+    el.title = tr(el.getAttribute("data-i18n-title"));
+  });
+  document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+    el.placeholder = tr(el.getAttribute("data-i18n-placeholder"));
+  });
+  document.getElementById("langRu").classList.toggle("active", lang === "ru");
+  document.getElementById("langEn").classList.toggle("active", lang === "en");
+  localStorage.setItem("webject.uiLang", lang);
+  if (state.activeFile) updateInfo();
+  refreshRunBtn();
+}
+
+const TEMPLATES = {
+  html: { label: "HTML / CSS / JS", files: {
+    "index.html": `<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мой сайт</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Привет, мир</h1>
+  </header>
+  <main>
+    <p>Это проект Webject.</p>
+    <button id="btn">Нажми меня</button>
+  </main>
+  <script src="js/script.js"><\/script>
+</body>
+</html>`,
+    "css/style.css": `* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #222; padding: 40px; }
+h1 { color: #3574f0; margin-bottom: 16px; }
+button { padding: 8px 16px; border: none; border-radius: 6px; background: #3574f0; color: #fff; cursor: pointer; }`,
+    "css/reset.css": `html, body, div, h1, p, a, img, ul, li, button { margin: 0; padding: 0; border: 0; font-size: 100%; }`,
+    "js/script.js": `const btn = document.getElementById("btn");
+btn.addEventListener("click", () => alert("Кнопка нажата"));`,
+    "js/utils/helpers.js": `export function formatDate(date) { return new Intl.DateTimeFormat("ru-RU").format(date); }`,
+    "assets/images/.gitkeep": ``,
+    "README.md": `Проект на HTML / CSS / JS
+`
+  }},
+  csharp: { label: "C#", files: {
+    "Webject.sln": `Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App", "App\\App.csproj", "{11111111-1111-1111-1111-111111111111}"
+EndProject
+Global
+EndGlobal`,
+    "App/App.csproj": `<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+</Project>`,
+    "App/Program.cs": `namespace App;
+public static class Program
+{
+    public static void Main(string[] args)
+    {
+        Console.WriteLine("Привет из Webject!");
+    }
+}`,
+    "App/Models/User.cs": `namespace App.Models;
+public class User
+{
+    public int Id { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public string Email { get; set; } = string.Empty;
+    public override string ToString() => $"User {{ Id = {Id}, Name = {Name} }}";
+}`,
+    "App/Models/Role.cs": `namespace App.Models;
+public enum Role { Guest, User, Admin }`,
+    "App/Services/UserService.cs": `using App.Models;
+namespace App.Services;
+public class UserService
+{
+    private readonly List<User> _users = new();
+    public void Add(User user) => _users.Add(user);
+    public IEnumerable<User> GetAll() => _users;
+    public User? FindById(int id) => _users.FirstOrDefault(u => u.Id == id);
+}`,
+    "App/Services/AuthService.cs": `namespace App.Services;
+public class AuthService
+{
+    public bool Login(string email, string password) => !string.IsNullOrEmpty(email);
+}`,
+    "App/Data/AppDbContext.cs": `namespace App.Data;
+public class AppDbContext
+{
+    public string ConnectionString { get; set; } = "Data Source=app.db";
+}`,
+    "App/Utils/StringExtensions.cs": `namespace App.Utils;
+public static class StringExtensions
+{
+    public static string Truncate(this string value, int max) => value.Length <= max ? value : value[..max] + "...";
+}`,
+    "Tests/App.Tests.csproj": `<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+</Project>`,
+    "Tests/UserServiceTests.cs": `namespace App.Tests;
+public class UserServiceTests
+{
+    public void AddUser_Works() { }
+}`
+  }},
+  python: { label: "Python", files: {
+    "main.py": `from app.service import Service
+
+
+def main() -> None:
+    service = Service()
+    service.run()
+
+
+if __name__ == "__main__":
+    main()`,
+    "app/__init__.py": ``,
+    "app/config.py": `APP_NAME = "Webject App"
+DEBUG = True
+VERSION = "0.1.0"`,
+    "app/models/__init__.py": `from app.models.user import User
+from app.models.role import Role
+
+__all__ = ["User", "Role"]`,
+    "app/models/user.py": `from dataclasses import dataclass
+
+
+@dataclass
+class User:
+    id: int
+    name: str
+    email: str
+
+    def __str__(self) -> str:
+        return f"User(id={self.id}, name={self.name})"`,
+    "app/models/role.py": `from enum import Enum
+
+
+class Role(Enum):
+    GUEST = "guest"
+    USER = "user"
+    ADMIN = "admin"`,
+    "app/service.py": `from app.config import APP_NAME
+from app.models import User
+
+
+class Service:
+    def __init__(self) -> None:
+        self.users: list[User] = []
+
+    def run(self) -> None:
+        print(f"Запуск {APP_NAME}")
+        self.users.append(User(1, "Иван", "ivan@example.com"))
+        for user in self.users:
+            print(user)`,
+    "app/utils/__init__.py": ``,
+    "app/utils/helpers.py": `def format_name(first: str, last: str) -> str:
+    return f"{first} {last}".strip()`,
+    "tests/__init__.py": ``,
+    "tests/test_service.py": `def test_placeholder() -> None:
+    assert True`,
+    "requirements.txt": `requests>=2.31.0
+`,
+    ".gitignore": `__pycache__/
+*.pyc
+.venv/
+`
+  }},
+  cpp: { label: "C++", files: {
+    "CMakeLists.txt": `cmake_minimum_required(VERSION 3.16)
+project(App LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+include_directories(include)
+
+add_executable(app
+    src/main.cpp
+    src/user.cpp
+)`,
+    "include/user.h": `#pragma once
+
+#include <string>
+
+class User {
+public:
+    User(int id, std::string name);
+    int getId() const;
+    const std::string& getName() const;
+
+private:
+    int id_;
+    std::string name_;
+};`,
+    "include/utils/string_utils.h": `#pragma once
+
+#include <string>
+
+namespace utils {
+    std::string to_upper(std::string value);
+}`,
+    "src/main.cpp": `#include <iostream>
+#include <vector>
+
+#include "user.h"
+
+int main() {
+    std::vector<User> users;
+    users.emplace_back(1, "Иван");
+    users.emplace_back(2, "Мария");
+
+    for (const auto& user : users) {
+        std::cout << user.getId() << ": " << user.getName() << "\\n";
+    }
+
+    return 0;
+}`,
+    "src/user.cpp": `#include "user.h"
+
+User::User(int id, std::string name) : id_(id), name_(std::move(name)) {}
+
+int User::getId() const { return id_; }
+const std::string& User::getName() const { return name_; }`,
+    "src/utils/string_utils.cpp": `#include "utils/string_utils.h"
+
+#include <algorithm>
+#include <cctype>
+
+namespace utils {
+    std::string to_upper(std::string value) {
+        std::transform(value.begin(), value.end(), value.begin(),
+                       [](unsigned char c) { return std::toupper(c); });
+        return value;
+    }
+}`,
+    "tests/test_main.cpp": `int main() { return 0; }`,
+    "README.md": `Проект на C++
+`
+  }},
+  empty: { label: "Empty project", files: {} }
+};
+
+const MODE_BY_EXT = {
+  html: "htmlmixed", htm: "htmlmixed", css: "css", js: "javascript", mjs: "javascript",
+  jsx: "jsx", json: "javascript",
+  cs: "text/x-csharp", py: "python", cpp: "text/x-c++src", cc: "text/x-c++src",
+  cxx: "text/x-c++src", h: "text/x-c++src", hpp: "text/x-c++src", csproj: "xml",
+  md: "markdown", xml: "xml", svg: "xml", xsd: "xml",
+  yaml: "yaml", yml: "yaml", sh: "shell", bash: "shell",
+  sql: "sql", rs: "rust", go: "text/x-go", toml: "toml"
+};
+
+const FORMATTABLE = { html: 1, htm: 1, css: 1, js: 1, mjs: 1, json: 1 };
+
+const FILE_ICONS = {
+  html: "🌐", css: "🎨", js: "🟨", mjs: "🟨", jsx: "🟨", ts: "🟦", tsx: "🟦",
+  json: "📦", cs: "🟣", py: "🐍", cpp: "🔷", cc: "🔷", h: "📘", hpp: "📘",
+  md: "📝", txt: "📄", sln: "🗂", csproj: "⚙", gitignore: "🚫", gitkeep: "",
+  xml: "🧾", svg: "🖼", yaml: "⚙", yml: "⚙", sh: "🖥", bash: "🖥",
+  sql: "🗃", rs: "🦀", go: "🐹", toml: "⚙"
+};
+
+const SPECIAL_NAMES = {
+  "Makefile": "🛠", "CMakeLists.txt": "🛠",
+  "Dockerfile": "🐳", ".env": "🔑", ".editorconfig": "⚙"
+};
+
+const MIME_BY_EXT = {
+  html: "text/html", htm: "text/html", css: "text/css",
+  js: "application/javascript", mjs: "application/javascript", json: "application/json",
+  xml: "application/xml", svg: "text/plain",
+  md: "text/markdown", txt: "text/plain"
+};
+
+let pyPromise = null;
+let pyInstance = null;
+let pyBusy = false;
+
+function loadPython() {
+  if (pyPromise) return pyPromise;
+  setStatus(tr("pyLoading"), "warn");
+  pyPromise = loadPyodide({ indexURL: "https://cdn.jsdelivr.net/pyodide/v0.26.1/full/" })
+    .then(py => {
+      pyInstance = py;
+      py.setStdout({ batched: s => printPy(s) });
+      py.setStderr({ batched: s => printPy(s, true) });
+      setStatus(tr("pyReady"), "ok");
+      return py;
+    })
+    .catch(e => {
+      pyPromise = null;
+      setStatus(tr("pyError") + ": " + e.message, "err");
+      throw e;
+    });
+  return pyPromise;
+}
+
+function printPy(text, isErr) {
+  const body = document.getElementById("pyOutputBody");
+  const span = document.createElement("span");
+  if (isErr) span.className = "err";
+  span.textContent = text + "\n";
+  body.appendChild(span);
+  body.scrollTop = body.scrollHeight;
+}
+
+const clearPy = () => { document.getElementById("pyOutputBody").innerHTML = ""; };
+const showPy = show => document.getElementById("pyOutput").classList.toggle("open", !!show);
+
+async function runPython() {
+  if (pyBusy) return;
+  if (!state.activeFile || extOf(state.activeFile) !== "py") {
+    setStatus(tr("pyNotPython"), "warn");
+    return;
+  }
+  const src = state.project.get(state.activeFile) || "";
+  if (!src.trim()) {
+    setStatus(tr("pyNoCode"), "warn");
+    return;
+  }
+  pyBusy = true;
+  showPy(true);
+  clearPy();
+  document.getElementById("runPyBtn").textContent = "⏳ " + tr("pyRunning");
+  try {
+    const py = await loadPython();
+    py.globals.set("__webject_file__", state.activeFile);
+    await py.runPythonAsync(src);
+    setStatus(tr("pyDone"), "ok");
+  } catch (e) {
+    printPy(e.message, true);
+    setStatus(tr("pyError"), "err");
+  } finally {
+    pyBusy = false;
+    refreshRunBtn();
+  }
+}
+
+function refreshRunBtn() {
+  const btn = document.getElementById("runPyBtn");
+  const isPy = state.activeFile && extOf(state.activeFile) === "py";
+  btn.style.display = isPy ? "" : "none";
+  if (isPy && !pyBusy) btn.textContent = "▶ " + tr("run");
+}
+
+const state = {
+  project: new Map(),
+  openTabs: [],
+  activeFile: null,
+  dirty: new Set(),
+  errorCounts: new Map(),
+  currentLang: "html",
+  collapsed: new Set(),
+  selectedPath: null,
+  cursorPosByFile: new Map(),
+  baseline: null,
+  cm: null,
+  docs: new Map(),
+  renamingPath: null,
+  modalMode: "file",
+  modalParent: "",
+  tabsRaf: null,
+  treeRaf: null,
+  lintTimer: null,
+  undoStack: [],
+  redoStack: [],
+  dropSourcePath: null
+};
+
+const els = {
+  tree: document.getElementById("tree"),
+  tabBar: document.getElementById("tabBar"),
+  editorArea: document.getElementById("editorArea"),
+  statusMsg: document.getElementById("statusMsg"),
+  statusInfo: document.getElementById("statusInfo"),
+  errorBadge: document.getElementById("errorBadge"),
+  fileCount: document.getElementById("fileCount"),
+  langSelect: document.getElementById("langSelect"),
+  modalBg: document.getElementById("modalBg"),
+  modalTitle: document.getElementById("modalTitle"),
+  modalHint: document.getElementById("modalHint"),
+  modalBody: document.getElementById("modalBody"),
+  modalCancel: document.getElementById("modalCancel"),
+  modalOk: document.getElementById("modalOk"),
+  sidebar: document.getElementById("sidebar"),
+  searchInput: document.getElementById("searchInput"),
+  ctxMenu: document.getElementById("ctxMenu"),
+  offlineBadge: document.getElementById("offlineBadge"),
+  mainMain: document.getElementById("mainMain")
+};
+
+const escapeHtml = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;" }[c]));
+
+function extOf(name) {
+  const base = name.split("/").pop();
+  const p = base.split(".");
+  return p.length > 1 ? p.pop().toLowerCase() : "";
+}
+
+const modeFor = name => MODE_BY_EXT[extOf(name)] || null;
+const canFormat = name => !!FORMATTABLE[extOf(name)];
+
+function iconFor(name) {
+  const ext = extOf(name);
+  if (FILE_ICONS[ext]) return FILE_ICONS[ext];
+  const base = name.split("/").pop();
+  for (const key in SPECIAL_NAMES) {
+    if (base === key || base.startsWith(key + ".")) return SPECIAL_NAMES[key];
+  }
+  if (name.endsWith(".gitignore")) return "🚫";
+  return "📄";
+}
+
+function parentOf(path) {
+  const i = path.lastIndexOf("/");
+  return i === -1 ? "" : path.slice(0, i);
+}
+
+function buildTree(files) {
+  const root = { folders: new Map(), files: new Map() };
+  for (const path of files.keys()) {
+    const parts = path.split("/");
+    let node = root;
+    parts.forEach((part, i) => {
+      if (i === parts.length - 1) node.files.set(part, true);
+      else {
+        if (!node.folders.has(part)) node.folders.set(part, { folders: new Map(), files: new Map() });
+        node = node.folders.get(part);
+      }
+    });
+  }
+  return root;
+}
+
+function lintSync(code, mode) {
+  if (!code || !mode) return [];
+  if (mode === "markdown") return [];
+  if (mode === "javascript") {
+    if (typeof acorn === "undefined") return lintBraces(code, mode);
+    try {
+      acorn.parse(code, { ecmaVersion: "latest", sourceType: "module" });
+      return [];
+    } catch (e) {
+      if (typeof acornLoose !== "undefined") {
+        try { acornLoose.parse(code, { ecmaVersion: "latest" }); return []; } catch (e2) { e = e2; }
+      }
+      const pos = Math.max(0, Math.min(code.length, e.pos || 0));
+      return [{ from: pos, to: Math.min(code.length, pos + 1), message: e.message.replace(/\s*\(\d+:\d+\)$/, ""), severity: "error" }];
+    }
+  }
+  if (mode === "htmlmixed" || mode === "xml") return lintHtml(code);
+  if (mode === "css") return lintCss(code);
+  return lintBraces(code, mode);
+}
+
+function lintHtml(code) {
+  const errors = [];
+  const tagRegex = /<\/?([a-zA-Z][a-zA-Z0-9-]*)((?:"[^"]*"|'[^']*'|[^>"'])*)>/g;
+  const stack = [];
+  const voidTags = new Set(["area","base","br","col","embed","hr","img","input","link","meta","param","source","track","wbr","!doctype"]);
+  let m;
+  while ((m = tagRegex.exec(code))) {
+    const full = m[0];
+    const name = m[1].toLowerCase();
+    if (full.startsWith("</")) {
+      if (voidTags.has(name)) continue;
+      if (!stack.length) errors.push({ from: m.index, to: m.index + full.length, message: "Лишний </" + name + ">", severity: "error" });
+      else {
+        const top = stack[stack.length - 1];
+        if (top.name !== name) errors.push({ from: m.index, to: m.index + full.length, message: "Ожидался </" + top.name + ">, а найден </" + name + ">", severity: "error" });
+        else stack.pop();
+      }
+    } else {
+      if (voidTags.has(name) || full.endsWith("/>")) continue;
+      stack.push({ name, index: m.index, len: full.length });
+    }
+  }
+  stack.forEach(t => errors.push({ from: t.index, to: t.index + t.len, message: "Тег <" + t.name + "> не закрыт", severity: "error" }));
+  return errors;
+}
+
+function lintCss(code) {
+  const errors = [];
+  let depth = 0, inStr = null, inComment = false;
+  for (let i = 0; i < code.length; i++) {
+    const ch = code[i], nx = code[i + 1];
+    if (inComment) { if (ch === "*" && nx === "/") { inComment = false; i++; } continue; }
+    if (inStr) { if (ch === "\\") { i++; continue; } if (ch === inStr) inStr = null; continue; }
+    if (ch === "/" && nx === "*") { inComment = true; i++; continue; }
+    if (ch === "\"" || ch === "'") { inStr = ch; continue; }
+    if (ch === "{") depth++;
+    else if (ch === "}") { depth--; if (depth < 0) { errors.push({ from: i, to: i + 1, message: "Лишняя }", severity: "error" }); depth = 0; } }
+  }
+  if (depth > 0) errors.push({ from: Math.max(0, code.length - 1), to: code.length, message: "Незакрытая {", severity: "error" });
+  if (inComment) errors.push({ from: Math.max(0, code.length - 1), to: code.length, message: "Незакрытый /*", severity: "error" });
+  return errors;
+}
+
+function lintBraces(code, mode) {
+  const errors = [];
+  const opens = { "(": ")", "[": "]", "{": "}" };
+  const closes = { ")": "(", "]": "[", "}": "{" };
+  const stack = [];
+  let inString = null, escape = false, inLineComment = false, inBlockComment = false;
+  for (let i = 0; i < code.length; i++) {
+    const ch = code[i], nx = code[i + 1];
+    if (inLineComment) { if (ch === "\n") inLineComment = false; continue; }
+    if (inBlockComment) { if (ch === "*" && nx === "/") { inBlockComment = false; i++; } continue; }
+    if (inString) {
+      if (escape) { escape = false; continue; }
+      if (ch === "\\") { escape = true; continue; }
+      if (ch === inString) inString = null;
+      continue;
+    }
+    if (mode === "python") {
+      if (ch === "#") { inLineComment = true; continue; }
+      if (code.slice(i, i + 3) === "\"\"\"" || code.slice(i, i + 3) === "'''") {
+        const q = code.slice(i, i + 3);
+        const end = code.indexOf(q, i + 3);
+        if (end === -1) { errors.push({ from: i, to: Math.min(code.length, i + 3), message: "Незакрытая тройная кавычка", severity: "error" }); i = code.length; }
+        else i = end + 2;
+        continue;
+      }
+    }
+    if (mode === "text/x-csharp" || mode === "text/x-c++src") {
+      if (ch === "/" && nx === "/") { inLineComment = true; i++; continue; }
+      if (ch === "/" && nx === "*") { inBlockComment = true; i++; continue; }
+    }
+    if (ch === "\"" || ch === "'") { inString = ch; continue; }
+    if (opens[ch]) stack.push({ ch, index: i });
+    else if (closes[ch]) {
+      const idx = stack.map(s => opens[s.ch]).lastIndexOf(ch);
+      if (idx === -1) errors.push({ from: i, to: i + 1, message: "Лишняя " + ch, severity: "error" });
+      else {
+        if (idx !== stack.length - 1) {
+          const top = stack[stack.length - 1];
+          errors.push({ from: top.index, to: top.index + 1, message: "Ожидалась " + opens[top.ch] + ", а найдена " + ch, severity: "error" });
+          stack.splice(idx, 1);
+        } else stack.pop();
+      }
+    }
+  }
+  if (inString) errors.push({ from: Math.max(0, code.length - 1), to: code.length, message: "Незакрытая строка", severity: "error" });
+  if (inBlockComment) errors.push({ from: Math.max(0, code.length - 1), to: code.length, message: "Незакрытый /*", severity: "error" });
+  stack.forEach(s => errors.push({ from: s.index, to: s.index + 1, message: "Незакрытая " + s.ch, severity: "error" }));
+  return errors;
+}
+
+function updateErrorBadge() {
+  const total = Array.from(state.errorCounts.values()).reduce((a, b) => a + b, 0);
+  const cur = state.activeFile ? (state.errorCounts.get(state.activeFile) || 0) : 0;
+  if (cur > 0) {
+    const word = cur === 1 ? "ошибка" : cur < 5 ? "ошибки" : "ошибок";
+    els.errorBadge.innerHTML = `<span class="err-dot"></span><span style="color:var(--error);font-weight:600">${cur} ${word}</span>`;
+  } else if (total > 0) {
+    els.errorBadge.innerHTML = `<span style="color:var(--error)">${total} в проекте</span>`;
+  } else {
+    els.errorBadge.innerHTML = "";
+  }
+}
+
+function updateInfo() {
+  if (!state.activeFile) { els.statusInfo.textContent = ""; return; }
+  let pos = { line: 0, ch: 0 };
+  if (state.cm) {
+    const p = state.cm.getCursor();
+    pos = { line: p.line, ch: p.ch };
+  }
+  const content = state.project.get(state.activeFile) || "";
+  const lineWord = uiLang === "ru" ? "стр." : "lines";
+  const charWord = uiLang === "ru" ? "симв." : "chars";
+  els.statusInfo.textContent = `${state.activeFile} · ${pos.line + 1}:${pos.ch + 1} · ${content.split("\n").length} ${lineWord} · ${content.length} ${charWord}`;
+}
+
+const updateTitle = () => { document.title = (state.dirty.size ? "● " : "") + "Webject"; };
+
+function hasRealChanges() {
+  if (!state.baseline) return state.dirty.size > 0;
+  if (state.project.size !== state.baseline.size) return true;
+  for (const [k, v] of state.project.entries()) {
+    if (state.baseline.get(k) !== v) return true;
+  }
+  return false;
+}
+
+function snapshot() {
+  return {
+    v: 3,
+    updatedAt: Date.now(),
+    lang: state.currentLang,
+    project: Array.from(state.project.entries()),
+    openTabs: state.openTabs,
+    activeFile: state.activeFile,
+    dirty: Array.from(state.dirty),
+    collapsed: Array.from(state.collapsed),
+    cursorPos: Array.from(state.cursorPosByFile.entries()),
+    uiLang
+  };
+}
+
+const persistSync = () => { try { localStorage.setItem("webject.state", JSON.stringify(snapshot())); } catch (e) {} };
+
+function saveState() {
+  try { localStorage.setItem("webject.state", JSON.stringify(snapshot())); }
+  catch (e) {
+    if (e && e.name === "QuotaExceededError") setStatus(tr("storageFull"), "err");
+  }
+}
+
+let saveTimer = null;
+const saveLater = () => { clearTimeout(saveTimer); saveTimer = setTimeout(saveState, 500); };
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem("webject.state");
+    if (!raw) return false;
+    const s = JSON.parse(raw);
+    if (!s.project || !s.project.length) return false;
+    const map = new Map();
+    for (const pair of s.project) {
+      if (Array.isArray(pair) && typeof pair[0] === "string" && typeof pair[1] === "string") map.set(pair[0], pair[1]);
+    }
+    if (!map.size) return false;
+    state.project = map;
+    state.openTabs = (s.openTabs || []).filter(n => map.has(n));
+    state.activeFile = s.activeFile && map.has(s.activeFile) ? s.activeFile : null;
+    state.dirty = new Set((s.dirty || []).filter(n => map.has(n)));
+    state.collapsed = new Set(s.collapsed || []);
+    state.currentLang = s.lang || "html";
+    if (s.uiLang && I18N[s.uiLang]) uiLang = s.uiLang;
+    if (Array.isArray(s.cursorPos)) {
+      s.cursorPos.forEach(pair => {
+        if (Array.isArray(pair) && map.has(pair[0]) && pair[1] && typeof pair[1].line === "number") {
+          state.cursorPosByFile.set(pair[0], { line: pair[1].line, ch: pair[1].ch || 0 });
+        }
+      });
+    }
+    state.baseline = new Map(state.project);
+    return true;
+  } catch (e) { return false; }
+}
+
+function loadTemplate(lang, silent) {
+  if (!silent && state.project.size > 0 && hasRealChanges()) {
+    askConfirm(tr("confirmUnsavedLang"), () => applyTemplate(lang));
+    els.langSelect.value = state.currentLang;
+    return;
+  }
+  applyTemplate(lang);
+}
+
+function applyTemplate(lang) {
+  state.currentLang = lang;
+  els.langSelect.value = lang;
+  const tpl = TEMPLATES[lang] || TEMPLATES.empty;
+  state.project = new Map(Object.entries(tpl.files || {}));
+  state.openTabs = [];
+  state.dirty = new Set();
+  state.errorCounts = new Map();
+  state.activeFile = null;
+  state.collapsed = new Set();
+  state.selectedPath = null;
+  state.renamingPath = null;
+  state.cursorPosByFile = new Map();
+  state.docs = new Map();
+  state.undoStack = [];
+  state.redoStack = [];
+  state.baseline = new Map(state.project);
+  if (state.cm) { try { state.cm.toTextArea(); } catch (e) {} state.cm = null; }
+  const first = Array.from(state.project.keys()).sort()[0];
+  if (first) {
+    state.openTabs.push(first);
+    state.activeFile = first;
+  }
+  renderTree();
+  renderTabs();
+  renderEditor();
+  setStatus(lang === "empty" ? tr("emptyProjectLoaded") : tr("templateLoaded") + tpl.label, "ok");
+  updateErrorBadge();
+  updateTitle();
+  saveLater();
+}
+
+function resetToEmpty() {
+  const go = () => {
+    state.currentLang = "empty";
+    els.langSelect.value = "empty";
+    state.project = new Map();
+    state.openTabs = [];
+    state.activeFile = null;
+    state.dirty = new Set();
+    state.errorCounts = new Map();
+    state.collapsed = new Set();
+    state.selectedPath = null;
+    state.renamingPath = null;
+    state.cursorPosByFile = new Map();
+    state.docs = new Map();
+    state.undoStack = [];
+    state.redoStack = [];
+    state.baseline = new Map();
+    if (state.cm) { try { state.cm.toTextArea(); } catch (e) {} state.cm = null; }
+    renderTree();
+    renderTabs();
+    renderEditor();
+    setStatus(tr("emptyProjectLoaded"), "ok");
+    updateErrorBadge();
+    updateTitle();
+    saveLater();
+  };
+  if (state.project.size > 0 && hasRealChanges()) {
+    askConfirm(tr("confirmEmpty"), go);
+    return;
+  }
+  go();
+}
+
+function renderTree() {
+  if (state.treeRaf) cancelAnimationFrame(state.treeRaf);
+  state.treeRaf = requestAnimationFrame(() => {
+    state.treeRaf = null;
+    const filter = els.searchInput.value.trim().toLowerCase();
+    let matches = null;
+    if (filter) {
+      matches = new Set();
+      for (const k of state.project.keys()) {
+        if (k.toLowerCase().includes(filter)) matches.add(k);
+        const parts = k.split("/");
+        for (let i = 1; i < parts.length; i++) {
+          if (parts.slice(0, i).join("/").toLowerCase().includes(filter)) matches.add(k);
+        }
+      }
+    }
+    els.tree.innerHTML = "";
+    els.fileCount.textContent = state.project.size;
+    renderNode(els.tree, buildTree(state.project), "", 0, matches);
+    paintTreeErrors();
+  });
+}
+
+function renderNode(container, node, prefix, depth, matches) {
+  const folderNames = Array.from(node.folders.keys()).sort();
+  const fileNames = Array.from(node.files.keys()).sort();
+
+  folderNames.forEach(name => {
+    const path = prefix ? prefix + "/" + name : name;
+    let hasMatch = true;
+    if (matches) {
+      hasMatch = false;
+      for (const k of matches) {
+        if (k === path || k.startsWith(path + "/")) { hasMatch = true; break; }
+      }
+    }
+    if (!hasMatch) return;
+    const isCollapsed = state.collapsed.has(path) && !matches;
+    const row = document.createElement("div");
+    row.className = "node" + (state.selectedPath === path ? " selected" : "");
+    row.style.paddingLeft = (10 + depth * 12) + "px";
+    row.dataset.path = path;
+    row.dataset.kind = "folder";
+    row.title = path;
+    row.setAttribute("role", "treeitem");
+    row.setAttribute("aria-expanded", String(!isCollapsed));
+    row.setAttribute("tabindex", "-1");
+    const arrow = document.createElement("span");
+    arrow.className = "arrow";
+    arrow.style.transform = `rotate(${isCollapsed ? 0 : 90}deg)`;
+    arrow.textContent = "▶";
+    row.appendChild(arrow);
+    const icon = document.createElement("span");
+    icon.className = "icon";
+    icon.textContent = isCollapsed ? "📁" : "📂";
+    row.appendChild(icon);
+    if (state.renamingPath === path) {
+      row.appendChild(makeRenameInput(name, path));
+    } else {
+      const nameEl = document.createElement("span");
+      nameEl.className = "name";
+      nameEl.textContent = name;
+      row.appendChild(nameEl);
+    }
+    row.onclick = e => {
+      if (state.renamingPath === path) return;
+      if (state.collapsed.has(path)) state.collapsed.delete(path); else state.collapsed.add(path);
+      state.selectedPath = path;
+      renderTree();
+      saveLater();
+    };
+    row.ondblclick = e => { e.stopPropagation(); beginRename(path); };
+    row.oncontextmenu = e => {
+      e.preventDefault();
+      e.stopPropagation();
+      state.selectedPath = path;
+      renderTree();
+      openMenu(e.clientX, e.clientY, "folder", path);
+    };
+    row.draggable = true;
+    row.ondragstart = e => {
+      e.dataTransfer.effectAllowed = "move";
+      e.dataTransfer.setData("text/plain", path);
+      state.dropSourcePath = path;
+    };
+    row.ondragover = e => {
+      if (state.dropSourcePath && state.dropSourcePath !== path && !state.dropSourcePath.startsWith(path + "/")) {
+        e.preventDefault();
+        e.dataTransfer.dropEffect = "move";
+        row.classList.add("drop-target");
+      }
+    };
+    row.ondragleave = () => row.classList.remove("drop-target");
+    row.ondrop = e => {
+      e.preventDefault();
+      e.stopPropagation();
+      row.classList.remove("drop-target");
+      const src = e.dataTransfer.getData("text/plain") || state.dropSourcePath;
+      state.dropSourcePath = null;
+      if (src && src !== path) movePath(src, path);
+    };
+    container.appendChild(row);
+    if (!isCollapsed) {
+      const wrap = document.createElement("div");
+      wrap.className = "children";
+      renderNode(wrap, node.folders.get(name), path, depth + 1, matches);
+      container.appendChild(wrap);
+    }
+  });
+
+  fileNames.forEach(name => {
+    const path = prefix ? prefix + "/" + name : name;
+    if (matches && !matches.has(path)) return;
+    const ext = extOf(name);
+    const errs = state.errorCounts.get(path) || 0;
+    const row = document.createElement("div");
+    row.className = "node" + (state.activeFile === path ? " active" : "") + (state.selectedPath === path ? " selected" : "");
+    row.style.paddingLeft = (10 + depth * 12 + 12) + "px";
+    row.dataset.path = path;
+    row.dataset.kind = "file";
+    row.title = path;
+    row.setAttribute("role", "treeitem");
+    row.setAttribute("tabindex", "-1");
+    const arrow = document.createElement("span");
+    arrow.className = "arrow";
+    row.appendChild(arrow);
+    const icon = document.createElement("span");
+    icon.className = "icon";
+    icon.textContent = iconFor(path);
+    row.appendChild(icon);
+    if (state.renamingPath === path) {
+      row.appendChild(makeRenameInput(name, path));
+    } else {
+      const nameEl = document.createElement("span");
+      nameEl.className = "name";
+      nameEl.textContent = name;
+      row.appendChild(nameEl);
+    }
+    if (errs > 0) {
+      const mark = document.createElement("span");
+      mark.className = "err-mark";
+      mark.textContent = "●";
+      mark.title = errs + " ошиб.";
+      row.appendChild(mark);
+    }
+    if (ext) {
+      const extEl = document.createElement("span");
+      extEl.className = "ext";
+      extEl.textContent = ext;
+      row.appendChild(extEl);
+    }
+    row.onclick = () => {
+      if (state.renamingPath === path) return;
+      state.selectedPath = path;
+      openFile(path);
+    };
+    row.ondblclick = e => { e.stopPropagation(); beginRename(path); };
+    row.oncontextmenu = e => {
+      e.preventDefault();
+      e.stopPropagation();
+      state.selectedPath = path;
+      renderTree();
+      openMenu(e.clientX, e.clientY, "file", path);
+    };
+    row.draggable = true;
+    row.ondragstart = e => {
+      e.dataTransfer.effectAllowed = "move";
+      e.dataTransfer.setData("text/plain", path);
+      state.dropSourcePath = path;
+    };
+    row.ondragover = e => {
+      if (state.dropSourcePath && state.dropSourcePath !== path) {
+        e.preventDefault();
+        e.dataTransfer.dropEffect = "move";
+        row.classList.add("drop-target");
+      }
+    };
+    row.ondragleave = () => row.classList.remove("drop-target");
+    row.ondrop = e => {
+      e.preventDefault();
+      e.stopPropagation();
+      row.classList.remove("drop-target");
+      const src = e.dataTransfer.getData("text/plain") || state.dropSourcePath;
+      state.dropSourcePath = null;
+      if (src && src !== path) movePath(src, parentOf(path));
+    };
+    container.appendChild(row);
+  });
+}
+
+function makeRenameInput(initialName, path) {
+  const input = document.createElement("input");
+  input.className = "rename-input";
+  input.value = initialName;
+  input.onclick = e => e.stopPropagation();
+  input.onkeydown = e => {
+    if (e.key === "Enter") { e.preventDefault(); e.stopPropagation(); finishRename(path, input.value); }
+    if (e.key === "Escape") { e.preventDefault(); e.stopPropagation(); state.renamingPath = null; renderTree(); }
+  };
+  input.onblur = () => { if (state.renamingPath === path) finishRename(path, input.value); };
+  setTimeout(() => { input.focus(); input.select(); }, 0);
+  return input;
+}
+
+function pushUndo(action) {
+  state.undoStack.push(action);
+  if (state.undoStack.length > 50) state.undoStack.shift();
+  state.redoStack = [];
+}
+
+const undoLast = () => {
+  if (!state.undoStack.length) return;
+  const a = state.undoStack.pop();
+  a.undo();
+  state.redoStack.push(a);
+  renderTree();
+  setStatus("Отменено", "ok");
+  saveLater();
+};
+
+const redoLast = () => {
+  if (!state.redoStack.length) return;
+  const a = state.redoStack.pop();
+  a.redo();
+  state.undoStack.push(a);
+  renderTree();
+  setStatus("Повторено", "ok");
+  saveLater();
+};
+
+function beginRename(path) { state.renamingPath = path; renderTree(); }
+
+function finishRename(oldPath, newName) {
+  state.renamingPath = null;
+  newName = (newName || "").trim();
+  const oldName = oldPath.split("/").pop();
+  if (!newName || newName === oldName) { renderTree(); return; }
+  if (!isValidName(newName)) { setStatus(tr("invalidName"), "warn"); renderTree(); return; }
+  const dir = parentOf(oldPath);
+  const newPath = dir ? dir + "/" + newName : newName;
+  const isFile = state.project.has(oldPath);
+  if (isFile) {
+    if (state.project.has(newPath)) { setStatus(tr("nameExists"), "warn"); renderTree(); return; }
+    moveFileEntry(oldPath, newPath);
+    pushUndo({
+      undo: () => { moveFileEntry(newPath, oldPath); renderTree(); renderTabs(); renderEditor(); },
+      redo: () => { moveFileEntry(oldPath, newPath); renderTree(); renderTabs(); renderEditor(); }
+    });
+  } else {
+    const exists = Array.from(state.project.keys()).some(k => k === newPath || k.startsWith(newPath + "/"));
+    if (exists) { setStatus(tr("nameExists"), "warn"); renderTree(); return; }
+    moveFolderEntry(oldPath, newPath);
+    pushUndo({
+      undo: () => { moveFolderEntry(newPath, oldPath); renderTree(); renderTabs(); renderEditor(); },
+      redo: () => { moveFolderEntry(oldPath, newPath); renderTree(); renderTabs(); renderEditor(); }
+    });
+  }
+  renderTree();
+  renderTabs();
+  renderEditor();
+  setStatus(tr("renamed") + oldPath + " → " + newPath, "ok");
+  saveLater();
+}
+
+function moveFileEntry(oldPath, newPath) {
+  const content = state.project.get(oldPath);
+  state.project.delete(oldPath);
+  state.project.set(newPath, content);
+  if (state.dirty.has(oldPath)) { state.dirty.delete(oldPath); state.dirty.add(newPath); }
+  if (state.errorCounts.has(oldPath)) { state.errorCounts.set(newPath, state.errorCounts.get(oldPath)); state.errorCounts.delete(oldPath); }
+  if (state.cursorPosByFile.has(oldPath)) { state.cursorPosByFile.set(newPath, state.cursorPosByFile.get(oldPath)); state.cursorPosByFile.delete(oldPath); }
+  if (state.docs.has(oldPath)) {
+    const doc = state.docs.get(oldPath);
+    doc._file = newPath;
+    state.docs.set(newPath, doc);
+    state.docs.delete(oldPath);
+  }
+  state.openTabs = state.openTabs.map(n => n === oldPath ? newPath : n);
+  if (state.activeFile === oldPath) state.activeFile = newPath;
+  if (state.selectedPath === oldPath) state.selectedPath = newPath;
+}
+
+function moveFolderEntry(oldPath, newPath) {
+  const prefix = oldPath + "/";
+  const moves = [];
+  for (const [k, v] of state.project.entries()) {
+    if (k.startsWith(prefix)) moves.push([k, newPath + "/" + k.slice(prefix.length), v]);
+  }
+  moves.forEach(([oldK, newK, v]) => {
+    state.project.delete(oldK);
+    state.project.set(newK, v);
+    if (state.dirty.has(oldK)) { state.dirty.delete(oldK); state.dirty.add(newK); }
+    if (state.errorCounts.has(oldK)) { state.errorCounts.set(newK, state.errorCounts.get(oldK)); state.errorCounts.delete(oldK); }
+    if (state.cursorPosByFile.has(oldK)) { state.cursorPosByFile.set(newK, state.cursorPosByFile.get(oldK)); state.cursorPosByFile.delete(oldK); }
+    if (state.docs.has(oldK)) {
+      const doc = state.docs.get(oldK);
+      doc._file = newK;
+      state.docs.set(newK, doc);
+      state.docs.delete(oldK);
+    }
+  });
+  state.openTabs = state.openTabs.map(n => n.startsWith(prefix) ? newPath + "/" + n.slice(prefix.length) : n);
+  if (state.activeFile && state.activeFile.startsWith(prefix)) state.activeFile = newPath + "/" + state.activeFile.slice(prefix.length);
+  if (state.selectedPath && state.selectedPath.startsWith(prefix)) state.selectedPath = newPath + "/" + state.selectedPath.slice(prefix.length);
+  const newCollapsed = new Set();
+  state.collapsed.forEach(c => {
+    if (c === oldPath) newCollapsed.add(newPath);
+    else if (c.startsWith(prefix)) newCollapsed.add(newPath + "/" + c.slice(prefix.length));
+    else newCollapsed.add(c);
+  });
+  state.collapsed = newCollapsed;
+  if (state.selectedPath === oldPath) state.selectedPath = newPath;
+}
+
+function movePath(srcPath, destDir) {
+  if (destDir && (destDir === srcPath || destDir.startsWith(srcPath + "/"))) {
+    setStatus(tr("cantMoveIntoSelf"), "warn");
+    return;
+  }
+  const srcName = srcPath.split("/").pop();
+  const newPath = destDir ? destDir + "/" + srcName : srcName;
+  if (newPath === srcPath) return;
+  const isFile = state.project.has(srcPath);
+  if (isFile) {
+    if (state.project.has(newPath)) { setStatus(tr("fileExistsInTarget"), "warn"); return; }
+    moveFileEntry(srcPath, newPath);
+    pushUndo({
+      undo: () => { moveFileEntry(newPath, srcPath); renderTree(); renderTabs(); renderEditor(); },
+      redo: () => { moveFileEntry(srcPath, newPath); renderTree(); renderTabs(); renderEditor(); }
+    });
+    setStatus(tr("moved") + srcPath + " → " + newPath, "ok");
+  } else {
+    const exists = Array.from(state.project.keys()).some(k => k === newPath || k.startsWith(newPath + "/"));
+    if (exists) { setStatus(tr("folderExistsInTarget"), "warn"); return; }
+    moveFolderEntry(srcPath, newPath);
+    pushUndo({
+      undo: () => { moveFolderEntry(newPath, srcPath); renderTree(); renderTabs(); renderEditor(); },
+      redo: () => { moveFolderEntry(srcPath, newPath); renderTree(); renderTabs(); renderEditor(); }
+    });
+    setStatus(tr("movedFolder") + srcPath + " → " + newPath, "ok");
+  }
+  renderTree();
+  renderTabs();
+  renderEditor();
+  saveLater();
+}
+
+function removeFile(path) {
+  askConfirm(tr("confirmDeleteFile") + path + "?", () => {
+    const content = state.project.get(path);
+    const wasDirty = state.dirty.has(path);
+    const wasCursor = state.cursorPosByFile.get(path);
+    const wasOpen = state.openTabs.includes(path);
+    state.project.delete(path);
+    state.dirty.delete(path);
+    state.errorCounts.delete(path);
+    state.cursorPosByFile.delete(path);
+    state.docs.delete(path);
+    state.openTabs = state.openTabs.filter(n => n !== path);
+    if (state.activeFile === path) state.activeFile = state.openTabs.length ? state.openTabs[state.openTabs.length - 1] : null;
+    if (state.selectedPath === path) state.selectedPath = null;
+    pushUndo({
+      undo: () => {
+        state.project.set(path, content);
+        if (wasDirty) state.dirty.add(path);
+        if (wasCursor) state.cursorPosByFile.set(path, wasCursor);
+        if (wasOpen && !state.openTabs.includes(path)) state.openTabs.push(path);
+        renderTree(); renderTabs(); renderEditor();
+      },
+      redo: () => {
+        state.project.delete(path);
+        state.dirty.delete(path);
+        state.errorCounts.delete(path);
+        state.docs.delete(path);
+        state.openTabs = state.openTabs.filter(n => n !== path);
+        if (state.activeFile === path) state.activeFile = state.openTabs.length ? state.openTabs[state.openTabs.length - 1] : null;
+        renderTree(); renderTabs(); renderEditor();
+      }
+    });
+    renderTree(); renderTabs(); renderEditor();
+    setStatus(tr("fileDeleted") + path, "warn");
+    saveLater();
+  });
+}
+
+function removeFolder(path) {
+  const toRemove = Array.from(state.project.keys()).filter(k => k === path || k.startsWith(path + "/"));
+  if (!toRemove.length) return;
+  askConfirm(tr("confirmDeleteFolder") + path + tr("andAllContent") + toRemove.length + tr("filesWord"), () => {
+    const saved = toRemove.map(k => [k, state.project.get(k), state.dirty.has(k), state.openTabs.includes(k), state.cursorPosByFile.get(k)]);
+    toRemove.forEach(k => {
+      state.project.delete(k);
+      state.dirty.delete(k);
+      state.errorCounts.delete(k);
+      state.cursorPosByFile.delete(k);
+      state.docs.delete(k);
+      state.openTabs = state.openTabs.filter(n => n !== k);
+    });
+    Array.from(state.collapsed).forEach(c => { if (c === path || c.startsWith(path + "/")) state.collapsed.delete(c); });
+    if (state.activeFile && (state.activeFile === path || state.activeFile.startsWith(path + "/"))) state.activeFile = state.openTabs.length ? state.openTabs[state.openTabs.length - 1] : null;
+    if (state.selectedPath && (state.selectedPath === path || state.selectedPath.startsWith(path + "/"))) state.selectedPath = null;
+    pushUndo({
+      undo: () => {
+        saved.forEach(([k, v, d, o, c]) => {
+          state.project.set(k, v);
+          if (d) state.dirty.add(k);
+          if (o && !state.openTabs.includes(k)) state.openTabs.push(k);
+          if (c) state.cursorPosByFile.set(k, c);
+        });
+        renderTree(); renderTabs(); renderEditor();
+      },
+      redo: () => {
+        saved.forEach(([k]) => {
+          state.project.delete(k);
+          state.dirty.delete(k);
+          state.errorCounts.delete(k);
+          state.docs.delete(k);
+          state.openTabs = state.openTabs.filter(n => n !== k);
+        });
+        renderTree(); renderTabs(); renderEditor();
+      }
+    });
+    renderTree(); renderTabs(); renderEditor();
+    setStatus(tr("folderDeleted") + path, "warn");
+    saveLater();
+  });
+}
+
+function isValidName(name) {
+  if (!name || name === "." || name === "..") return false;
+  if (name.length > 255) return false;
+  if (/[<>:"|?*\x00-\x1f]/.test(name)) return false;
+  if (/^(CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9])$/i.test(name)) return false;
+  if (name !== name.trim()) return false;
+  return true;
+}
+
+function renderTabs() {
+  if (state.tabsRaf) cancelAnimationFrame(state.tabsRaf);
+  state.tabsRaf = requestAnimationFrame(() => {
+    state.tabsRaf = null;
+    els.tabBar.innerHTML = "";
+    state.openTabs.forEach(name => {
+      const tab = document.createElement("div");
+      tab.className = "tab" + (state.activeFile === name ? " active" : "");
+      tab.setAttribute("role", "tab");
+      tab.setAttribute("tabindex", state.activeFile === name ? "0" : "-1");
+      tab.dataset.path = name;
+      const label = document.createElement("span");
+      label.textContent = name;
+      tab.appendChild(label);
+      const errs = state.errorCounts.get(name) || 0;
+      if (state.dirty.has(name) || errs > 0) {
+        const dot = document.createElement("span");
+        dot.className = "dot" + (errs > 0 ? " err" : "");
+        tab.appendChild(dot);
+      }
+      const close = document.createElement("button");
+      close.className = "close";
+      close.textContent = "×";
+      close.setAttribute("aria-label", "Close " + name);
+      close.onclick = e => { e.stopPropagation(); closeTab(name); };
+      tab.appendChild(close);
+      tab.onclick = () => openFile(name);
+      tab.onauxclick = e => { if (e.button === 1) closeTab(name); };
+      tab.oncontextmenu = e => {
+        e.preventDefault();
+        openMenu(e.clientX, e.clientY, "tab", name);
+      };
+      els.tabBar.appendChild(tab);
+    });
+    updateTitle();
+  });
+}
+
+function downloadFile(name) {
+  const content = state.project.get(name) || "";
+  const mime = MIME_BY_EXT[extOf(name)] || "text/plain";
+  const blob = new Blob([content], { type: mime + ";charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = name.split("/").pop();
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  setStatus(tr("downloaded") + name, "ok");
+}
+
+function openFile(name) {
+  if (!state.project.has(name)) { setStatus(tr("notFound") + name, "warn"); return; }
+  if (state.activeFile === name) return;
+  if (state.activeFile && state.cm) {
+    const p = state.cm.getCursor();
+    state.cursorPosByFile.set(state.activeFile, { line: p.line, ch: p.ch });
+  }
+  if (!state.openTabs.includes(name)) state.openTabs.push(name);
+  state.activeFile = name;
+  const parts = name.split("/");
+  for (let i = 1; i < parts.length; i++) state.collapsed.delete(parts.slice(0, i).join("/"));
+  renderTree();
+  renderTabs();
+  renderEditor();
+  refreshRunBtn();
+  setStatus(tr("opened") + name, "ok");
+  saveLater();
+  requestAnimationFrame(() => {
+    const row = els.tree.querySelector(`.node[data-path="${CSS.escape(name)}"]`);
+    if (row) row.scrollIntoView({ block: "nearest" });
+  });
+}
+
+function closeTab(name) {
+  if (state.dirty.has(name)) {
+    askConfirm(tr("confirmCloseDirty") + name + tr("confirmCloseDirtyEnd"), () => reallyCloseTab(name));
+    return;
+  }
+  reallyCloseTab(name);
+}
+
+function reallyCloseTab(name) {
+  state.openTabs = state.openTabs.filter(n => n !== name);
+  if (state.activeFile === name) state.activeFile = state.openTabs.length ? state.openTabs[state.openTabs.length - 1] : null;
+  renderTree(); renderTabs(); renderEditor();
+  refreshRunBtn();
+  saveLater();
+}
+
+function setupEditor(container) {
+  if (typeof CodeMirror === "undefined") return null;
+  container.innerHTML = "";
+  const cm = CodeMirror(container, {
+    value: "",
+    mode: null,
+    lineNumbers: true,
+    indentUnit: 4,
+    tabSize: 4,
+    indentWithTabs: false,
+    lineWrapping: false,
+    autoCloseBrackets: true,
+    autoCloseTags: true,
+    matchBrackets: true,
+    styleActiveLine: true,
+    highlightSelectionMatches: true,
+    foldGutter: true,
+    theme: "darcula",
+    gutters: ["CodeMirror-lint-markers", "CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+    hintOptions: { completeSingle: false },
+    extraKeys: {
+      "Ctrl-/": "toggleComment",
+      "Cmd-/": "toggleComment",
+      "Alt-Up": "moveLineUp",
+      "Alt-Down": "moveLineDown",
+      "Shift-Ctrl-K": "deleteLine",
+      "Ctrl-Space": "autocomplete",
+      "Ctrl-F": "findPersistent",
+      "Ctrl-H": "replace",
+      "Cmd-F": "findPersistent",
+      "Cmd-H": "replace",
+      "Ctrl-G": () => openGoto(),
+      "Ctrl-Enter": () => { if (state.activeFile) previewHtml(state.activeFile); }
+    },
+    lint: {
+      getAnnotations: text => {
+        let file = state.activeFile;
+        if (state.cm) {
+          const curDoc = state.cm.getDoc();
+          for (const [k, d] of state.docs) {
+            if (d === curDoc) { file = k; break; }
+          }
+        }
+        const mode = modeFor(file || "");
+        if (!mode || !file) return [];
+        const errs = lintSync(text, mode);
+        state.errorCounts.set(file, errs.length);
+        scheduleBadge();
+        return errs;
+      },
+      async: false
+    }
+  });
+  cm.setSize("100%", "100%");
+  return cm;
+}
+
+function renderEditor() {
+  if (!state.activeFile || !state.project.has(state.activeFile)) {
+    if (state.cm) { try { state.cm.toTextArea(); } catch (e) {} state.cm = null; }
+    refreshRunBtn();
+    if (state.project.size === 0) {
+      els.editorArea.innerHTML = `
+        <div class="empty">
+          <div class="big">📂</div>
+          ${escapeHtml(tr("emptyTitle"))}
+          <span>${escapeHtml(tr("emptyHint"))}</span>
+          <span class="hint"><button class="control primary" id="emptyCreateFile" style="margin-top:8px">${escapeHtml(tr("createFile"))}</button></span>
+        </div>`;
+      const btn = document.getElementById("emptyCreateFile");
+      if (btn) btn.onclick = () => askNew("file", "");
+    } else {
+      els.editorArea.innerHTML = `<div class="empty"><div class="big">📂</div>${escapeHtml(tr("emptyEditorHint"))}<span>${escapeHtml(tr("dblClickRename"))}</span><span class="hint">${escapeHtml(tr("hintBar"))}</span></div>`;
+    }
+    updateInfo();
+    updateErrorBadge();
+    return;
+  }
+  const file = state.activeFile;
+  const content = state.project.get(file) || "";
+  const mode = modeFor(file);
+  if (!state.cm) {
+    state.cm = setupEditor(els.editorArea);
+    if (!state.cm) {
+      els.editorArea.innerHTML = `<div class="empty"><div class="big">⚠</div>${escapeHtml(tr("noCodeMirror"))}<span>${escapeHtml(tr("checkInternet"))}</span></div>`;
+      setStatus(tr("noCodeMirror"), "err");
+      return;
+    }
+    state.cm.on("cursorActivity", () => {
+      if (!state.activeFile) return;
+      const p = state.cm.getCursor();
+      state.cursorPosByFile.set(state.activeFile, { line: p.line, ch: p.ch });
+      updateInfo();
+    });
+    state.cm.on("change", () => {
+      const cur = state.activeFile;
+      if (!cur || !state.project.has(cur)) return;
+      const val = state.cm.getValue();
+      if (state.project.get(cur) === val) return;
+      state.project.set(cur, val);
+      state.dirty.add(cur);
+      renderTabs();
+      updateInfo();
+      saveLater();
+    });
+  }
+  state.cm.setOption("mode", mode);
+  const currentVal = state.cm.getValue();
+  if (currentVal !== content) state.cm.setValue(content);
+  state.cm.setOption("lineNumbers", true);
+  const saved = state.cursorPosByFile.get(file);
+  if (saved && typeof saved.line === "number") state.cm.setCursor({ line: saved.line, ch: saved.ch || 0 });
+  else state.cm.setCursor({ line: 0, ch: 0 });
+  state.cm.refresh();
+  requestAnimationFrame(() => { if (state.cm) { state.cm.refresh(); state.cm.focus(); } });
+  setTimeout(() => { if (state.cm) state.cm.refresh(); }, 80);
+  setTimeout(() => { if (state.cm) state.cm.refresh(); }, 250);
+  clearTimeout(state.lintTimer);
+  state.lintTimer = setTimeout(() => { if (state.cm) state.cm.performLint(); }, 120);
+  updateInfo();
+  refreshRunBtn();
+}
+
+let badgeTimer = null;
+function scheduleBadge() {
+  clearTimeout(badgeTimer);
+  badgeTimer = setTimeout(() => {
+    updateErrorBadge();
+    paintTreeErrors();
+    paintTabErrors();
+  }, 200);
+}
+
+function paintTreeErrors() {
+  els.tree.querySelectorAll(".node[data-kind='file']").forEach(row => {
+    const path = row.dataset.path;
+    const errs = state.errorCounts.get(path) || 0;
+    let mark = row.querySelector(".err-mark");
+    if (errs > 0 && !mark) {
+      mark = document.createElement("span");
+      mark.className = "err-mark";
+      mark.textContent = "●";
+      const ext = row.querySelector(".ext");
+      if (ext) row.insertBefore(mark, ext); else row.appendChild(mark);
+    }
+    if (mark) {
+      if (errs > 0) mark.title = errs + " err.";
+      else mark.remove();
+    }
+  });
+}
+
+function paintTabErrors() {
+  els.tabBar.querySelectorAll(".tab").forEach(tab => {
+    const name = tab.dataset.path;
+    if (!name) return;
+    const errs = state.errorCounts.get(name) || 0;
+    const dirty = state.dirty.has(name);
+    const dot = tab.querySelector(".dot");
+    if (errs > 0 || dirty) {
+      if (!dot) {
+        const d = document.createElement("span");
+        d.className = "dot" + (errs > 0 ? " err" : "");
+        const close = tab.querySelector(".close");
+        if (close) tab.insertBefore(d, close); else tab.appendChild(d);
+      } else {
+        if (errs > 0) dot.classList.add("err"); else dot.classList.remove("err");
+      }
+    } else if (dot) {
+      dot.remove();
+    }
+  });
+}
+
+function setStatus(text, cls) {
+  els.statusMsg.textContent = text;
+  els.statusMsg.className = cls || "";
+}
+
+function trapFocus(on) {
+  if (typeof on !== "boolean") return;
+  [document.querySelector("header"), els.mainMain, document.querySelector(".status")].forEach(t => {
+    if (t) t.inert = on;
+  });
+}
+
+function openModal(mode, parent, title, hint, bodyHTML, okLabel) {
+  state.modalMode = mode;
+  state.modalParent = parent || "";
+  els.modalTitle.textContent = title || tr("newFile");
+  els.modalHint.textContent = hint || "";
+  els.modalBody.innerHTML = bodyHTML || `<input id="modalInput" placeholder="" autocomplete="off">`;
+  els.modalOk.textContent = okLabel || tr("create");
+  els.modalOk.onclick = null;
+  els.modalBg.classList.add("show");
+  trapFocus(true);
+  const first = els.modalBody.querySelector("input, select, button");
+  if (first) setTimeout(() => first.focus(), 0);
+}
+
+function closeModal() {
+  els.modalBg.classList.remove("show");
+  trapFocus(false);
+}
+
+function askConfirm(message, onOk) {
+  openModal("confirm", "", tr("confirmTitle"), "",
+    `<div class="hint">${escapeHtml(message)}</div>`,
+    tr("ok"));
+  els.modalOk.onclick = () => { closeModal(); onOk(); };
+}
+
+function askNew(mode, parent) {
+  openModal(mode, parent,
+    mode === "file" ? tr("newFile") : tr("newFolder"),
+    parent ? (uiLang === "ru" ? "Внутри папки: " : "Inside folder: ") + parent : (uiLang === "ru" ? "В корне проекта" : "In project root"),
+    `<input id="modalInput" placeholder="${mode === "file" ? "e.g., utils.py" : "e.g., components"}" autocomplete="off">`,
+    tr("create"));
+  const input = els.modalBody.querySelector("#modalInput");
+  els.modalOk.onclick = doCreate;
+
+  function doCreate() {
+    const raw = input.value.trim();
+    if (!raw) return;
+    const clean = raw.replace(/^\/+|\/+$/g, "");
+    if (!clean) return;
+    const parts = clean.split("/");
+    if (parts.some(p => !isValidName(p))) { setStatus(tr("pathInvalid"), "warn"); return; }
+    const full = parent ? parent + "/" + clean : clean;
+    if (mode === "file") {
+      if (state.project.has(full)) { setStatus(tr("fileExists"), "warn"); return; }
+      state.project.set(full, "");
+      state.dirty.add(full);
+      closeModal();
+      openFile(full);
+      setStatus(tr("fileCreated") + full, "ok");
+    } else {
+      const marker = full + "/.gitkeep";
+      if (state.project.has(marker) || state.project.has(full)) { setStatus(tr("folderExists"), "warn"); return; }
+      state.project.set(marker, "");
+      state.collapsed.delete(full);
+      closeModal();
+      renderTree();
+      setStatus(tr("folderCreated") + full, "ok");
+    }
+    saveLater();
+  }
+}
+
+function openGoto() {
+  if (!state.cm) { setStatus(tr("noOpenFile"), "warn"); return; }
+  openModal("goto", "", tr("gotoLine"), tr("lineNumber"), `<input id="modalInput" type="number" min="1" placeholder="${tr("gotoPlaceholder")}" autocomplete="off">`, tr("gotoBtn"));
+  const input = els.modalBody.querySelector("#modalInput");
+  els.modalOk.onclick = () => {
+    const n = parseInt(input.value);
+    if (!n || n < 1) return;
+    const line = Math.min(n - 1, state.cm.lineCount() - 1);
+    state.cm.setCursor({ line, ch: 0 });
+    state.cm.scrollIntoView({ line, ch: 0 }, 100);
+    state.cm.focus();
+    closeModal();
+  };
+}
+
+function openMenu(x, y, kind, path) {
+  const menu = els.ctxMenu;
+  menu.innerHTML = "";
+  const items = [];
+
+  if (kind === "empty") {
+    items.push({ label: tr("ctxNewFile"), icon: "📄", action: () => askNew("file", "") });
+    items.push({ label: tr("ctxNewFolder"), icon: "📁", action: () => askNew("folder", "") });
+    items.push({ sep: true });
+    items.push({ label: tr("ctxCollapseAll"), icon: "⊟", action: () => collapseAll(true) });
+    items.push({ label: tr("ctxExpandAll"), icon: "⊞", action: () => collapseAll(false) });
+    items.push({ label: tr("ctxImportFiles"), icon: "⬆", action: importFiles });
+    items.push({ sep: true });
+    items.push({ label: tr("ctxClearProject"), icon: "🧹", danger: true, action: resetToEmpty });
+  } else if (kind === "folder") {
+    items.push({ label: tr("ctxNewFile"), icon: "📄", action: () => askNew("file", path) });
+    items.push({ label: tr("ctxNewFolder"), icon: "📁", action: () => askNew("folder", path) });
+    items.push({ sep: true });
+    items.push({ label: tr("ctxRename"), icon: "✎", kbd: "F2", action: () => beginRename(path) });
+    items.push({ label: tr("ctxCopyPath"), icon: "📋", action: () => copyPath(path) });
+    items.push({ label: tr("ctxDeleteFolder"), icon: "🗑", danger: true, action: () => removeFolder(path) });
+  } else if (kind === "file") {
+    items.push({ label: tr("ctxOpen"), icon: "↗", action: () => openFile(path) });
+    items.push({ label: tr("ctxDownload"), icon: "⬇", action: () => downloadFile(path) });
+    if (extOf(path) === "html") items.push({ label: tr("ctxPreview"), icon: "▶", kbd: "Ctrl+Enter", action: () => previewHtml(path) });
+    items.push({ sep: true });
+    items.push({ label: tr("ctxRename"), icon: "✎", kbd: "F2", action: () => beginRename(path) });
+    items.push({ label: tr("ctxCopyPath"), icon: "📋", action: () => copyPath(path) });
+    if (canFormat(path)) items.push({ label: tr("ctxFormat"), icon: "✨", kbd: "Shift+Alt+F", action: () => formatFile(path) });
+    if (extOf(path) === "html") items.push({ label: tr("ctxDownloadOne"), icon: "🌐", action: () => downloadSingleHtml(path) });
+    items.push({ label: tr("ctxDeleteFile"), icon: "🗑", danger: true, action: () => removeFile(path) });
+  } else if (kind === "tab") {
+    items.push({ label: tr("ctxClose"), icon: "✕", kbd: "Ctrl+W", action: () => closeTab(path) });
+    items.push({ label: tr("ctxCloseOthers"), icon: "⊟", action: () => {
+      state.openTabs = [path];
+      state.activeFile = path;
+      renderTabs(); renderTree(); renderEditor();
+    }});
+    items.push({ sep: true });
+    items.push({ label: tr("ctxDownload"), icon: "⬇", action: () => downloadFile(path) });
+    items.push({ label: tr("ctxRename"), icon: "✎", action: () => beginRename(path) });
+  }
+
+  items.forEach(it => {
+    if (it.sep) {
+      const sep = document.createElement("div");
+      sep.className = "ctx-sep";
+      menu.appendChild(sep);
+      return;
+    }
+    const btn = document.createElement("button");
+    btn.className = "ctx-item" + (it.danger ? " danger" : "");
+    const iconEl = document.createElement("span");
+    iconEl.textContent = it.icon;
+    const labelEl = document.createElement("span");
+    labelEl.textContent = it.label;
+    btn.appendChild(iconEl);
+    btn.appendChild(labelEl);
+    if (it.kbd) {
+      const kbd = document.createElement("span");
+      kbd.className = "kbd";
+      kbd.textContent = it.kbd;
+      btn.appendChild(kbd);
+    }
+    btn.onclick = e => { e.stopPropagation(); hideMenu(); it.action(); };
+    menu.appendChild(btn);
+  });
+
+  menu.style.visibility = "hidden";
+  menu.style.left = "0px";
+  menu.style.top = "0px";
+  menu.classList.add("show");
+  const rect = menu.getBoundingClientRect();
+  const w = rect.width || 220;
+  const h = rect.height || 200;
+  menu.style.left = Math.min(x, Math.max(8, window.innerWidth - w - 8)) + "px";
+  menu.style.top = Math.max(8, Math.min(y, window.innerHeight - h - 8)) + "px";
+  menu.style.visibility = "";
+}
+
+const hideMenu = () => els.ctxMenu.classList.remove("show");
+
+function copyPath(path) {
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(path).then(
+      () => setStatus(tr("copiedPath") + path, "ok"),
+      () => setStatus(tr("copyFailed"), "warn")
+    );
+  } else {
+    setStatus(tr("clipboardUnavailable"), "warn");
+  }
+}
+
+function collapseAll(collapse) {
+  if (collapse) {
+    state.collapsed = new Set();
+    const walk = (node, prefix) => {
+      node.folders.forEach((v, f) => {
+        const p = prefix ? prefix + "/" + f : f;
+        state.collapsed.add(p);
+        walk(v, p);
+      });
+    };
+    walk(buildTree(state.project), "");
+  } else {
+    state.collapsed = new Set();
+  }
+  renderTree();
+  saveLater();
+}
+
+function formatFile(path) {
+  if (!state.project.has(path)) return;
+  if (!canFormat(path)) { setStatus(tr("formatNotSupported"), "warn"); return; }
+  const content = state.project.get(path);
+  const ext = extOf(path);
+  let formatted = content;
+  try {
+    if (ext === "json") formatted = JSON.stringify(JSON.parse(content), null, 2);
+    else if ((ext === "js" || ext === "mjs") && typeof js_beautify !== "undefined") formatted = js_beautify(content, { indent_size: 4 });
+    else if (ext === "css" && typeof css_beautify !== "undefined") formatted = css_beautify(content, { indent_size: 4 });
+    else if ((ext === "html" || ext === "htm") && typeof html_beautify !== "undefined") formatted = html_beautify(content, { indent_size: 4 });
+    else { setStatus(tr("formatNotSupported"), "warn"); return; }
+  } catch (e) {
+    setStatus(tr("formatError") + e.message, "err");
+    return;
+  }
+  if (formatted === content) { setStatus(tr("alreadyFormatted"), "ok"); return; }
+  state.project.set(path, formatted);
+  state.dirty.add(path);
+  if (state.activeFile === path && state.cm) state.cm.setValue(formatted);
+  renderTree(); renderTabs();
+  setStatus(tr("formatted") + path, "ok");
+  saveLater();
+}
+
+function buildSingleHtml(indexPath) {
+  if (!state.project.has(indexPath)) return null;
+  let html = state.project.get(indexPath);
+  const dir = parentOf(indexPath);
+  html = html.replace(/<link[^>]*rel=["']stylesheet["'][^>]*href=["']([^"']+)["'][^>]*>/gi, (m, href) => {
+    const full = resolveRelative(dir, href);
+    const css = state.project.get(full);
+    return css ? "<style>\n" + css + "\n</style>" : m;
+  });
+  html = html.replace(/<script([^>]*)\ssrc=["']([^"']+)["']([^>]*)><\/script\s*>/gi, (m, attrs1, src, attrs2) => {
+    const full = resolveRelative(dir, src);
+    const js = state.project.get(full);
+    if (!js) return m;
+    const isModule = /type=["']module["']/i.test(attrs1 + attrs2);
+    const safe = js.replace(/<\/script\s*>/gi, "<\\/script>");
+    return isModule ? "<script type=\"module\">\n" + safe + "\n<\\/script>" : "<script>\n" + safe + "\n<\\/script>";
+  });
+  return html;
+}
+
+function previewHtml(path) {
+  if (!state.project.has(path) || extOf(path) !== "html") { setStatus(tr("previewOnlyHtml"), "warn"); return; }
+  const html = buildSingleHtml(path);
+  if (!html) return;
+  const blob = new Blob([html], { type: "text/html;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  window.open(url, "_blank");
+  setTimeout(() => URL.revokeObjectURL(url), 60000);
+  setStatus(tr("previewOpened"), "ok");
+}
+
+function downloadSingleHtml(indexPath) {
+  if (extOf(indexPath) !== "html") return;
+  const html = buildSingleHtml(indexPath);
+  if (!html) return;
+  const blob = new Blob([html], { type: "text/html;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "index.html";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  setStatus(tr("downloadedOne"), "ok");
+}
+
+function resolveRelative(baseDir, rel) {
+  if (!rel || /^(https?:|data:|\/|#)/.test(rel)) return "";
+  rel = decodeURIComponent(rel.split("?")[0].split("#")[0]);
+  const parts = (baseDir ? baseDir + "/" : "").split("/").filter(Boolean);
+  rel.split("/").forEach(p => {
+    if (p === "..") parts.pop();
+    else if (p !== "." && p) parts.push(p);
+  });
+  return parts.join("/");
+}
+
+function addFiles(fileList) {
+  const files = Array.from(fileList);
+  if (!files.length) return;
+  let pending = files.length;
+  let added = 0;
+  files.forEach(file => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      let target = file.name;
+      let i = 1;
+      while (state.project.has(target)) {
+        const dot = file.name.lastIndexOf(".");
+        target = dot > 0 ? file.name.slice(0, dot) + "_" + i + file.name.slice(dot) : file.name + "_" + i;
+        i++;
+      }
+      state.project.set(target, String(reader.result));
+      state.dirty.add(target);
+      added++;
+      if (--pending === 0) { renderTree(); saveLater(); setStatus(tr("imported") + added, "ok"); }
+    };
+    reader.onerror = () => {
+      if (--pending === 0) { renderTree(); saveLater(); setStatus(tr("importError") + added, "err"); }
+    };
+    reader.readAsText(file);
+  });
+}
+
+function importFiles() {
+  const input = document.createElement("input");
+  input.type = "file";
+  input.multiple = true;
+  input.onchange = () => addFiles(input.files);
+  input.click();
+}
+
+function importJson() {
+  const input = document.createElement("input");
+  input.type = "file";
+  input.accept = ".json,application/json";
+  input.onchange = () => {
+    const file = input.files && input.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const data = JSON.parse(reader.result);
+        if (!data.project || !Array.isArray(data.project)) throw new Error("no project");
+        const map = new Map();
+        for (const pair of data.project) {
+          if (Array.isArray(pair) && typeof pair[0] === "string" && typeof pair[1] === "string") map.set(pair[0], pair[1]);
+        }
+        if (!map.size) throw new Error("empty project");
+        askConfirm(tr("confirmImport") + map.size + tr("confirmImportEnd"), () => {
+          state.project = map;
+          state.openTabs = (data.openTabs || []).filter(n => map.has(n));
+          if (!state.openTabs.length) {
+            const first = Array.from(map.keys()).sort()[0];
+            if (first) state.openTabs = [first];
+          }
+          state.activeFile = data.activeFile && map.has(data.activeFile) ? data.activeFile : (state.openTabs[0] || null);
+          state.dirty = new Set();
+          state.errorCounts = new Map();
+          state.cursorPosByFile = new Map();
+          state.docs = new Map();
+          if (state.cm) { try { state.cm.toTextArea(); } catch (e) {} state.cm = null; }
+          if (data.lang && TEMPLATES[data.lang]) { state.currentLang = data.lang; els.langSelect.value = data.lang; }
+          state.baseline = new Map(state.project);
+          renderTree(); renderTabs(); renderEditor();
+          setStatus(tr("importedProject") + map.size + " " + tr("files"), "ok");
+          saveLater();
+        });
+      } catch (e) {
+        setStatus(tr("importJsonError") + e.message, "err");
+      }
+    };
+    reader.onerror = () => setStatus(tr("readError"), "err");
+    reader.readAsText(file);
+  };
+  input.click();
+}
+
+const updateOnlineStatus = () => {
+  if (navigator.onLine) els.offlineBadge.classList.remove("show");
+  else els.offlineBadge.classList.add("show");
+};
+
+function openGuide() {
+  const body = `
+    <div class="guide-section"><h4>${escapeHtml(tr("g1Title"))}</h4><p>${escapeHtml(tr("g1Text"))}</p></div>
+    <div class="guide-section">
+      <h4>${escapeHtml(tr("g2Title"))}</h4>
+      <div class="step"><div class="step-num">1</div><div class="step-body">${escapeHtml(tr("g2Step1"))}</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body">${escapeHtml(tr("g2Step2"))}</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body">${escapeHtml(tr("g2Step3"))}</div></div>
+    </div>
+    <div class="guide-section"><h4>${escapeHtml(tr("g3Title"))}</h4><p>${escapeHtml(tr("g3Text"))}</p></div>
+    <div class="guide-section"><h4>${escapeHtml(tr("g4Title"))}</h4><p>${escapeHtml(tr("g4Text"))}</p></div>
+    <div class="guide-section"><h4>${escapeHtml(tr("g5Title"))}</h4><p>${escapeHtml(tr("g5Text"))}</p><p class="sub">${escapeHtml(tr("g5Note"))}</p></div>
+    <div class="guide-section"><h4>${escapeHtml(tr("g6Title"))}</h4><p>${escapeHtml(tr("g6Text"))}</p></div>
+    <div class="guide-section"><h4>${escapeHtml(tr("g7Title"))}</h4><p>${escapeHtml(tr("g7Text"))}</p></div>
+    <div class="guide-section"><h4>${escapeHtml(tr("g8Title"))}</h4><p>${escapeHtml(tr("g8Text"))}</p></div>
+    <div class="guide-section"><h4>${escapeHtml(tr("g9Title"))}</h4><p>${escapeHtml(tr("g9Text"))}</p></div>
+    <div class="guide-section"><h4>${escapeHtml(tr("g10Title"))}</h4><p>${escapeHtml(tr("g10Text"))}</p></div>
+  `;
+  openModal("guide", "", tr("guideTitle"), tr("guideIntro"), body, tr("guideClose"));
+  els.modalOk.onclick = closeModal;
+}
+
+document.getElementById("toggleSidebar").onclick = () => {
+  els.sidebar.classList.toggle("hidden");
+  setTimeout(() => { if (state.cm) state.cm.refresh(); }, 260);
+};
+document.getElementById("logoBtn").onclick = openGuide;
+els.modalCancel.onclick = closeModal;
+els.langSelect.onchange = () => loadTemplate(els.langSelect.value);
+
+document.getElementById("regenBtn").onclick = () => {
+  if (state.project.size > 0 && hasRealChanges()) {
+    askConfirm(tr("confirmRegen") + TEMPLATES[state.currentLang].label + tr("confirmRegenEnd"), () => applyTemplate(state.currentLang));
+    return;
+  }
+  applyTemplate(state.currentLang);
+};
+
+document.getElementById("runPyBtn").onclick = runPython;
+document.getElementById("importJsonBtn").onclick = importJson;
+document.getElementById("previewBtn").onclick = () => {
+  if (state.activeFile) previewHtml(state.activeFile);
+  else setStatus(tr("noOpenFile"), "warn");
+};
+document.getElementById("clearOutput").onclick = () => { clearPy(); };
+document.getElementById("hideOutput").onclick = () => { showPy(false); };
+document.getElementById("closeOutput").onclick = () => { showPy(false); clearPy(); };
+document.getElementById("langRu").onclick = () => applyUiLang("ru");
+document.getElementById("langEn").onclick = () => applyUiLang("en");
+
+document.getElementById("saveZip").onclick = () => {
+  if (typeof JSZip === "undefined") { setStatus(tr("noJSZip"), "warn"); return; }
+  const zip = new JSZip();
+  const folders = new Set();
+  for (const [name, content] of state.project.entries()) {
+    zip.file(name, content);
+    const parts = name.split("/");
+    for (let i = 1; i < parts.length; i++) folders.add(parts.slice(0, i).join("/"));
+  }
+  folders.forEach(f => zip.folder(f));
+  zip.generateAsync({ type: "blob", compression: "DEFLATE", compressionOptions: { level: 6 } }, meta => {
+    setStatus("ZIP: " + Math.floor(meta.percent) + "%", "ok");
+  })
+    .then(blob => {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "Webject.zip";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+      state.dirty.clear();
+      state.baseline = new Map(state.project);
+      renderTabs();
+      setStatus(tr("zipSaved"), "ok");
+    })
+    .catch(err => setStatus(tr("zipError") + err.message, "err"));
+};
+
+document.addEventListener("keydown", e => {
+  const ctrl = e.ctrlKey || e.metaKey;
+  const inInput = document.activeElement && (document.activeElement.tagName === "INPUT" || document.activeElement.tagName === "TEXTAREA" || document.activeElement.isContentEditable);
+
+  if (els.modalBg.classList.contains("show")) {
+    if (e.key === "Escape") { e.preventDefault(); closeModal(); return; }
+    if (e.key === "Enter" && state.modalMode !== "confirm" && els.modalOk.onclick) {
+      e.preventDefault();
+      els.modalOk.onclick();
+      return;
+    }
+    return;
+  }
+
+  if (ctrl && e.shiftKey && e.key === "S") { e.preventDefault(); document.getElementById("saveZip").click(); return; }
+  if (ctrl && !e.shiftKey && e.key === "s") { e.preventDefault(); saveState(); setStatus(tr("savedStorage"), "ok"); return; }
+  if (ctrl && e.altKey && e.key.toLowerCase() === "i") { e.preventDefault(); importJson(); return; }
+  if (ctrl && e.key === "n") { e.preventDefault(); askNew("file", targetParent()); return; }
+  if (ctrl && e.key === "b") { e.preventDefault(); els.sidebar.classList.toggle("hidden"); setTimeout(() => { if (state.cm) state.cm.refresh(); }, 260); return; }
+  if (ctrl && e.key === "w") { e.preventDefault(); if (state.activeFile) closeTab(state.activeFile); return; }
+  if (ctrl && e.shiftKey && e.key === "F") { e.preventDefault(); openSearch(); return; }
+  if (ctrl && e.shiftKey && e.key === "E") { e.preventDefault(); els.searchInput.focus(); els.searchInput.select(); return; }
+  if (ctrl && e.shiftKey && e.key === "Z") { e.preventDefault(); redoLast(); return; }
+  if (ctrl && !e.shiftKey && e.key === "z" && !inInput && (!state.cm || !state.cm.hasFocus())) { e.preventDefault(); undoLast(); return; }
+  if (ctrl && /^[1-9]$/.test(e.key)) {
+    const idx = parseInt(e.key) - 1;
+    if (state.openTabs[idx]) { e.preventDefault(); openFile(state.openTabs[idx]); }
+    return;
+  }
+  if (ctrl && e.key === "Tab") {
+    e.preventDefault();
+    if (!state.openTabs.length) return;
+    const idx = state.openTabs.indexOf(state.activeFile);
+    const next = e.shiftKey ? (idx - 1 + state.openTabs.length) % state.openTabs.length : (idx + 1) % state.openTabs.length;
+    openFile(state.openTabs[next]);
+    return;
+  }
+  if (e.shiftKey && e.altKey && e.key === "F" && state.activeFile) { e.preventDefault(); formatFile(state.activeFile); return; }
+  if (e.key === "F2" && state.selectedPath) { e.preventDefault(); beginRename(state.selectedPath); return; }
+  if (e.key === "Delete" && state.selectedPath && (!state.cm || !state.cm.hasFocus())) {
+    e.preventDefault();
+    if (state.project.has(state.selectedPath)) removeFile(state.selectedPath);
+    else removeFolder(state.selectedPath);
+    return;
+  }
+  if (e.key === "Escape") { hideMenu(); return; }
+
+  if (els.tree.contains(document.activeElement) || document.activeElement === els.tree) {
+    const nodes = Array.from(els.tree.querySelectorAll(".node"));
+    const current = state.selectedPath ? nodes.findIndex(n => n.dataset.path === state.selectedPath) : -1;
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      const next = nodes[Math.min(current + 1, nodes.length - 1)];
+      if (next) { state.selectedPath = next.dataset.path; nodes.forEach(n => n.setAttribute("tabindex", n === next ? "0" : "-1")); next.focus(); }
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      const prev = nodes[Math.max(current - 1, 0)];
+      if (prev) { state.selectedPath = prev.dataset.path; nodes.forEach(n => n.setAttribute("tabindex", n === prev ? "0" : "-1")); prev.focus(); }
+    } else if (e.key === "ArrowRight" && state.selectedPath && !state.project.has(state.selectedPath)) {
+      e.preventDefault();
+      state.collapsed.delete(state.selectedPath);
+      renderTree();
+    } else if (e.key === "ArrowLeft" && state.selectedPath && !state.project.has(state.selectedPath)) {
+      e.preventDefault();
+      state.collapsed.add(state.selectedPath);
+      renderTree();
+    } else if (e.key === "Enter" && state.selectedPath) {
+      e.preventDefault();
+      if (state.project.has(state.selectedPath)) openFile(state.selectedPath);
+      else {
+        if (state.collapsed.has(state.selectedPath)) state.collapsed.delete(state.selectedPath);
+        else state.collapsed.add(state.selectedPath);
+        renderTree();
+      }
+    }
+  }
+});
+
+function targetParent() {
+  if (!state.selectedPath) return "";
+  if (state.project.has(state.selectedPath)) return parentOf(state.selectedPath);
+  return state.selectedPath;
+}
+
+els.tree.addEventListener("contextmenu", e => {
+  if (e.target.closest(".node")) return;
+  e.preventDefault();
+  state.selectedPath = null;
+  renderTree();
+  openMenu(e.clientX, e.clientY, "empty", "");
+});
+
+document.addEventListener("click", e => {
+  if (!e.target.closest("#ctxMenu")) hideMenu();
+});
+document.addEventListener("scroll", hideMenu, true);
+window.addEventListener("resize", () => { hideMenu(); if (state.cm) state.cm.refresh(); });
+
+document.addEventListener("dragover", e => e.preventDefault());
+document.addEventListener("drop", e => {
+  if (e.target.closest("#tree")) return;
+  e.preventDefault();
+  if (!e.dataTransfer) return;
+  const files = [];
+  let skippedDirs = false;
+  if (e.dataTransfer.items) {
+    for (const item of e.dataTransfer.items) {
+      if (item.kind !== "file") continue;
+      const entry = item.webkitGetAsEntry && item.webkitGetAsEntry();
+      if (entry && entry.isDirectory) { skippedDirs = true; continue; }
+      const f = item.getAsFile();
+      if (f) files.push(f);
+    }
+  } else if (e.dataTransfer.files) files.push(...e.dataTransfer.files);
+  if (skippedDirs) setStatus(tr("foldersNotSupported"), "warn");
+  if (files.length) addFiles(files);
+});
+
+els.searchInput.oninput = () => {
+  if (state.treeRaf) cancelAnimationFrame(state.treeRaf);
+  state.treeRaf = null;
+  renderTree();
+};
+
+window.addEventListener("online", updateOnlineStatus);
+window.addEventListener("offline", updateOnlineStatus);
+
+function openSearch() {
+  openModal("search", "", tr("searchProject"), tr("searchLine"), `<input id="modalInput" placeholder="${tr("searchPlaceholder2")}" autocomplete="off"><div id="searchResults" style="margin-top:10px; font-size:12px; color:var(--muted);"></div>`, tr("searchBtn"));
+  const input = els.modalBody.querySelector("#modalInput");
+  const results = els.modalBody.querySelector("#searchResults");
+  const run = () => {
+    const q = input.value.trim().toLowerCase();
+    results.innerHTML = "";
+    if (!q) { results.textContent = tr("enterQuery"); return; }
+    let count = 0;
+    const list = document.createElement("div");
+    list.style.display = "flex";
+    list.style.flexDirection = "column";
+    list.style.gap = "4px";
+    outer:
+    for (const [k, v] of state.project.entries()) {
+      const lines = v.split("\n");
+      for (let i = 0; i < lines.length; i++) {
+        if (lines[i].toLowerCase().includes(q)) {
+          const item = document.createElement("div");
+          item.style.padding = "6px 8px";
+          item.style.borderRadius = "6px";
+          item.style.cursor = "pointer";
+          item.style.background = "var(--panel-2)";
+          item.textContent = k + ":" + (i + 1) + " — " + lines[i].slice(0, 120);
+          item.onclick = () => { closeModal(); openFile(k); setTimeout(() => { if (state.cm) { state.cm.setCursor({ line: i, ch: 0 }); state.cm.scrollIntoView({ line: i, ch: 0 }, 100); } }, 150); };
+          list.appendChild(item);
+          count++;
+          if (count >= 50) break outer;
+        }
+      }
+    }
+    if (!count) results.textContent = tr("nothingFound");
+    else { results.appendChild(list); results.insertBefore(document.createTextNode(tr("found") + count + " "), list); }
+  };
+  els.modalOk.onclick = run;
+}
+
+function boot() {
+  if (typeof CodeMirror === "undefined") {
+    els.editorArea.innerHTML = `<div class="empty"><div class="big">⚠</div>${escapeHtml(tr("noCodeMirror"))}<span>${escapeHtml(tr("checkInternet"))}</span></div>`;
+    setStatus(tr("noCodeMirror"), "err");
+    return;
+  }
+  const savedUiLang = localStorage.getItem("webject.uiLang");
+  if (savedUiLang && I18N[savedUiLang]) {
+    uiLang = savedUiLang;
+  } else {
+    const browserLang = (navigator.language || "ru").slice(0, 2).toLowerCase();
+    uiLang = browserLang === "ru" ? "ru" : "en";
+  }
+  const loaded = loadState();
+  applyUiLang(uiLang);
+  if (!loaded) applyTemplate("html");
+  else {
+    els.langSelect.value = state.currentLang;
+    renderTree();
+    renderTabs();
+    renderEditor();
+    setStatus(tr("restored"), "ok");
+  }
+  updateOnlineStatus();
+  updateTitle();
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", boot);
+} else {
+  boot();
+}
+</script>
+</body>
+</html>
